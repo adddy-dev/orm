@@ -28,6 +28,8 @@ export async function POST(req: Request) {
       company_size,
       key_assets_company,
       language
+    }, {
+      timeout: 120000,
     });
 
     // Extract base64 PDF from response

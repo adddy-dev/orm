@@ -34,13 +34,15 @@ export default function ChatPage() {
   const sendMessageToAPI = async (message: string) => {
     try {
       setIsLoading(true);
-      axios.defaults.baseURL = process.env.NEXT_CHAT_API;
       const { data } = await axios.post(
         "/api/chat",
         {
           msg: message,
           user_id: "user1",
           language
+        },
+        {
+          timeout: 120000,
         }
       );
       return data.reply;

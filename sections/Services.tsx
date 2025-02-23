@@ -44,7 +44,7 @@ function Services() {
         </p>
       </div>
       
-      <div className="max-w-screen-xl mx-auto grid md:grid-cols-3 gap-8">
+      <div className="lg:px-[5%] mx-auto grid md:grid-cols-3 gap-8">
         {SERVICES.map((service, index) => (
           <Card
             key={index} 

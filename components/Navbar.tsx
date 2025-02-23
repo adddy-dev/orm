@@ -14,11 +14,6 @@ const Navbar = () => {
     {
       label: 'Home',
       href: '#',
-      options: [
-        { label: 'option-1', href: '/' },
-        { label: 'option-2', href: '/' },
-        { label: 'option-3', href: '/' },
-      ]
     },
     {
       label: 'Features',
@@ -93,44 +88,54 @@ const Navbar = () => {
       {/* Desktop and larger screens: Menu links */}
       <div className="hidden lg:flex items-center w-full max-w-5xl gap-x-4 justify-end">
         {navItems.map((item, index) => (
-          <DropdownMenu key={index}>
-            <DropdownMenuTrigger className='outline-none'>
-              <Link
-                href={item.href}
-                className="hover:text-primary flex items-center gap-1 text-sm"
+          (item.options || item.heads) ? (
+            <DropdownMenu key={index}>
+              <DropdownMenuTrigger className='outline-none'>
+                <Link
+                  href={item.href}
+                  className="hover:text-primary flex items-center gap-1 text-sm"
+                >
+                  {item.label}
+                  <ChevronDown size={16} />
+                </Link>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center"
+                className='border border-muted-foreground bg-background'
               >
-                {item.label}
-                <ChevronDown size={16} />
-              </Link>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="center"
-              className='border border-muted-foreground bg-background'
-            >
-              {item.options && item.options.map((option, index) => (
-                <DropdownMenuItem key={index}>
-                  <Link href={option.href} className='flex items-center gap-1'>
-                    <ChevronRight size={16} />
-                    {option.label}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-              <div className='flex flex-row gap-10 p-4'>
-                {item.heads && item.heads.map((head, index) => (
-                  <div className='flex flex-col gap-2 items-start justify-start' key={index}>
-                    <h3 className='text-sm font-semibold mb-2'>{head.label}</h3>
-                    {head.options.map((option, i) => (
-                      <DropdownMenuItem key={i}>
-                        <Link href={option.href} className='flex gap-1 items-center'>
-                          <ChevronRight size={16} />
-                          {option.label}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </div>
+                {item.options && item.options.map((option, index) => (
+                  <DropdownMenuItem key={index}>
+                    <Link href={option.href} className='flex items-center gap-1'>
+                      <ChevronRight size={16} />
+                      {option.label}
+                    </Link>
+                  </DropdownMenuItem>
                 ))}
-              </div>
-            </DropdownMenuContent>
-          </DropdownMenu>
+                <div className='flex flex-row gap-10 p-4'>
+                  {item.heads && item.heads.map((head, index) => (
+                    <div className='flex flex-col gap-2 items-start justify-start' key={index}>
+                      <h3 className='text-sm font-semibold mb-2'>{head.label}</h3>
+                      {head.options.map((option, i) => (
+                        <DropdownMenuItem key={i}>
+                          <Link href={option.href} className='flex gap-1 items-center'>
+                            <ChevronRight size={16} />
+                            {option.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Link
+              key={index}
+              href={item.href}
+              className="hover:text-primary flex items-center gap-1 text-sm"
+            >
+              {item.label}
+            </Link>
+          )
         ))}
         <div className="flex items-center gap-5">
           <SignedOut>
@@ -167,43 +172,56 @@ const Navbar = () => {
 
       {/* Mobile menu items */}
       {menuOpen && (
-        <div className="lg:hidden absolute top-20 left-0 right-0 bg-background p-6 z-50 text-center flex flex-col gap-2">
+        <div className="lg:hidden absolute top-20 left-0 right-0 bg-background p-6 z-50 text-center items-center flex flex-col gap-4">
           {navItems.map((item, index) => (
-            <DropdownMenu key={index}>
-              <DropdownMenuTrigger>
-                <Link
-                  href={item.href}
-                  className="hover:text-primary flex items-center gap-1 py-2 justify-center"
+            (item.options || item.heads) ? (
+              <DropdownMenu key={index}>
+                <DropdownMenuTrigger className='outline-none'>
+                  <Link
+                    href={item.href}
+                    className="hover:text-primary flex items-center gap-1 text-base"
+                  >
+                    {item.label}
+                    <ChevronDown size={16} />
+                  </Link>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center"
+                  className='border border-muted-foreground bg-background'
                 >
-                  {item.label}
-                  <ChevronDown size={16} />
-                </Link>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="center"
-                className='border border-muted-foreground bg-background'
-              >
-                {item.options && item.options.map((option, index) => (
-                  <DropdownMenuItem key={index}>
-                    <Link href={option.href}>{option.label}</Link>
-                  </DropdownMenuItem>
-                ))}
-                <div className='flex flex-row gap-10 p-4'>
-                  {item.heads && item.heads.map((head, index) => (
-                    <div className='flex flex-col gap-2 items-start justify-start' key={index}>
-                      <h3 className='text-sm font-semibold mb-2'>{head.label}</h3>
-                      {head.options.map((option, i) => (
-                        <DropdownMenuItem key={i}>
-                          <Link href={option.href} className='flex gap-1 items-center'>
-                            <ChevronRight size={16} />
-                            {option.label}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </div>
+                  {item.options && item.options.map((option, index) => (
+                    <DropdownMenuItem key={index}>
+                      <Link href={option.href} className='flex items-center gap-1'>
+                        <ChevronRight size={16} />
+                        {option.label}
+                      </Link>
+                    </DropdownMenuItem>
                   ))}
-                </div>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  <div className='flex flex-row gap-10 p-4'>
+                    {item.heads && item.heads.map((head, index) => (
+                      <div className='flex flex-col gap-2 items-start justify-start' key={index}>
+                        <h3 className='text-sm font-semibold mb-2'>{head.label}</h3>
+                        {head.options.map((option, i) => (
+                          <DropdownMenuItem key={i}>
+                            <Link href={option.href} className='flex gap-1 items-center'>
+                              <ChevronRight size={16} />
+                              {option.label}
+                            </Link>
+                          </DropdownMenuItem>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                key={index}
+                href={item.href}
+                className="hover:text-primary flex items-center gap-1 text-base"
+              >
+                {item.label}
+              </Link>
+            )
           ))}
           <div className="flex items-center gap-5">
             <SignedOut>

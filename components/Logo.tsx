@@ -9,6 +9,7 @@ const Logo = () => {
         height={40}
         src="/logo.svg"
         alt="AIPolicyPro Logo"
+        className='w-10 h-10'
       />
       <span className='font-medium'>|</span>
       <h1 className='pl-2'>AIPolicyPro</h1>

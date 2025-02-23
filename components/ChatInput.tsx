@@ -33,7 +33,7 @@ export const ChatInput = ({
       textareaRef.current.style.height = 'auto';
       const scrollHeight = textareaRef.current.scrollHeight;
       const maxHeight = 24 * 5;
-      textareaRef.current.style.height = `${Math.min(scrollHeight, maxHeight)}px`;
+      textareaRef.current.style.height = `${(Math.min(scrollHeight, maxHeight)/16)}rem`;
     }
   }, [value]);
 
@@ -73,8 +73,11 @@ export const ChatInput = ({
           onChange={(e) => onChange(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={isLoading ? "Waiting for response..." : "Message..."}
-          className="px-12 pr-24 resize-none overflow-hidden text-base"
           rows={1}
+          className="px-12 pr-24 resize-none overflow-auto text-base"
+          style={{
+            scrollbarWidth: 'none'
+          }}
           disabled={isLoading}
         />
         <Select onValueChange={(value: 'english' | 'arabic') => {

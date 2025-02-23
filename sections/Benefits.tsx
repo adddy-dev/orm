@@ -56,7 +56,7 @@ export default function Benefits() {
       </div>
       
       <TooltipProvider>
-        <div className="grid md:grid-cols-2 gap-8 max-w-screen-xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 lg:px-[5%] mx-auto">
           {ADVANTAGES.map((advantage, index) => (
             <Tooltip key={index}>
               <TooltipTrigger asChild>

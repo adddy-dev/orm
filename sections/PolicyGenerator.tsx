@@ -58,12 +58,10 @@ export default function PolicyGeneratorForm() {
   const handleGenerateClick = async () => {
     try {
       setGenerating(true);
+      axios.defaults.baseURL = process.env.NEXT_POLICY_API;
       const response = await axios.post<{ pdfBase64: string, policy: string }>(
         '/api/generate-policy',
-        formData,
-        {
-          timeout: 120000,
-        }
+        formData
       );
       setPdfData(response.data.pdfBase64);
       setPdfDataText(response.data.policy);

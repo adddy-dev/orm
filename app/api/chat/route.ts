@@ -1,17 +1,14 @@
 import { NextResponse } from 'next/server';
 import axios from 'axios';
 
+axios.defaults.baseURL = process.env.NEXT_CHAT_API;
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    axios.defaults.baseURL = process.env.NEXT_CHAT_API;
     const response = await axios.post(
       '/chat',
-      body,
-      {
-        timeout: 120000,
-      }
+      body
     );
     
     return NextResponse.json(response.data);

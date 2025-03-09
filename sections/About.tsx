@@ -76,7 +76,7 @@ const About = () => {
 
   return (
     <section className='bg-foreground' id='about'>
-      <div className="w-full lg:pl-[4%] text-background py-24 flex flex-col md:flex-row items-center">
+      <div className="w-full lg:pl-[4%] text-background py-6 flex flex-col md:flex-row items-center">
         <div className='mx-auto px-6 py-12 md:py-24 lg:w-[55%]'>
           <h2 className="text-[32px] md:text-4xl font-bold mb-8 md:mb-10 leading-[40px] md:leading-tight">
             Transform your<br />

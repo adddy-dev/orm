@@ -18,8 +18,8 @@ const LandingPage = () => {
       <main className="mx-auto">
         <HeroSec />
 
-        <FeaturesSec />
         <About />
+        <FeaturesSec />
         <Services />
         <Benefits />
         <Demo />

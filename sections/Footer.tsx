@@ -28,7 +28,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-background text-primary pt-16 pb-8">
+    <footer className="bg-background text-primary pt-16 pb-8" id="contact">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-4xl font-bold text-primary mb-4">
           Get in Touch

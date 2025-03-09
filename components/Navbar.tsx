@@ -10,28 +10,28 @@ import { Button } from './ui/button'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
-  const navItems = [
+  const navItems: Array<{
+    label: string
+    href: string
+    options?: {
+      label: string
+      href: string
+    }[]
+    heads?: Array<{
+      label: string
+      options?: {
+        label: string
+        href: string
+      }[]
+    }>
+  }> = [
     {
       label: 'Home',
       href: '#',
     },
     {
-      label: 'Features',
-      href: '#',
-      options: [
-        { label: 'option-1', href: '/' },
-        { label: 'option-2', href: '/' },
-        { label: 'option-3', href: '/' },
-      ]
-    },
-    {
       label: 'About',
-      href: '#',
-      options: [
-        { label: 'option-1', href: '/' },
-        { label: 'option-2', href: '/' },
-        { label: 'option-3', href: '/' },
-      ]
+      href: '#about',
     },
     {
       label: 'Services',
@@ -62,22 +62,8 @@ const Navbar = () => {
       ]
     },
     {
-      label: 'Benefits',
-      href: '#',
-      options: [
-        { label: 'option-1', href: '/' },
-        { label: 'option-2', href: '/' },
-        { label: 'option-3', href: '/' },
-      ]
-    },
-    {
       label: 'Contact',
-      href: '#',
-      options: [
-        { label: 'option-1', href: '/' },
-        { label: 'option-2', href: '/' },
-        { label: 'option-3', href: '/' },
-      ]
+      href: '#contact'
     }
   ]
 
@@ -86,7 +72,7 @@ const Navbar = () => {
       <Logo />
 
       {/* Desktop and larger screens: Menu links */}
-      <div className="hidden lg:flex items-center w-full max-w-5xl gap-x-6 justify-end">
+      <div className="hidden md:flex items-center w-full max-w-5xl gap-x-10 justify-end">
         {navItems.map((item, index) => (
           (item.options || item.heads) ? (
             <DropdownMenu key={index}>
@@ -114,7 +100,7 @@ const Navbar = () => {
                   {item.heads && item.heads.map((head, index) => (
                     <div className='flex flex-col gap-2 items-start justify-start' key={index}>
                       <h3 className='text-sm font-semibold mb-2'>{head.label}</h3>
-                      {head.options.map((option, i) => (
+                      {head.options?.map((option, i) => (
                         <DropdownMenuItem key={i}>
                           <Link href={option.href} className='flex gap-1 items-center'>
                             <ChevronRight size={16} />
@@ -172,7 +158,7 @@ const Navbar = () => {
 
       {/* Mobile menu items */}
       {menuOpen && (
-        <div className="lg:hidden absolute top-20 left-0 right-0 bg-background p-6 z-50 text-center items-center flex flex-col gap-4">
+        <div className="md:hidden absolute top-20 left-0 right-0 bg-background p-6 z-50 text-center items-center flex flex-col gap-4">
           {navItems.map((item, index) => (
             (item.options || item.heads) ? (
               <DropdownMenu key={index}>
@@ -200,7 +186,7 @@ const Navbar = () => {
                     {item.heads && item.heads.map((head, index) => (
                       <div className='flex flex-col gap-2 items-start justify-start' key={index}>
                         <h3 className='text-sm font-semibold mb-2'>{head.label}</h3>
-                        {head.options.map((option, i) => (
+                        {head.options?.map((option, i) => (
                           <DropdownMenuItem key={i}>
                             <Link href={option.href} className='flex gap-1 items-center'>
                               <ChevronRight size={16} />

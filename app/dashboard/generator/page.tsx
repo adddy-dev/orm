@@ -1,10 +1,17 @@
+'use client'
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from 'next/link';
 import Logo from '@/components/Logo';
+import { usePolicyGenContext } from '@/context/policyGenerator';
+import { redirect } from 'next/navigation';
 
 const PolicyGenerator = () => {
+
+  const {setPolicy} = usePolicyGenContext();
+
   const policies = [
     { name: "Acceptable Use Policy", status: "generate" },
     { name: "Access Control Policy", status: "generate" },
@@ -72,6 +79,11 @@ const PolicyGenerator = () => {
     }
   ];
 
+  function handlePolicyGeneration(policyName: string) {
+    setPolicy(policyName);
+    redirect('/generator');
+  }
+
 
   return (
     <div className='w-full relative overflow-auto'>
@@ -91,7 +103,6 @@ const PolicyGenerator = () => {
                   }`}
               >
                 <span>{policy.name}</span>
-                <Link href='/dashboard/default-model'>
                   <Button
                     variant={policy.status === 'edit' ? 'secondary' : 'default'}
                     className={
@@ -99,10 +110,12 @@ const PolicyGenerator = () => {
                         ? 'bg-primary text-accent-foreground hover:bg-primary-foreground'
                         : 'bg-muted text-accent-foreground hover:bg-background'
                     }
+                    onClick={() => {
+                          handlePolicyGeneration(policy.name.toLowerCase().split(' ').join('-'));
+                        }}
                   >
                     {policy.status === 'edit' ? 'Edit' : 'Generate'}
                   </Button>
-                </Link>
               </div>
             ))}
           </CardContent>

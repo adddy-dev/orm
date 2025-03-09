@@ -49,17 +49,7 @@ export const Header = ({ title }: { title?: string }) => {
 
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm">
-              Updates
-            </Button>
-            <Button variant="ghost" size="sm">
               Help
-            </Button>
-            <Button
-              variant="default"
-              size="sm"
-              className="bg-navy-900 text-accent-foreground hover:bg-navy-800"
-            >
-              ✨ Unlimited
             </Button>
             <Link href={'/'}>
               <Button variant="ghost" size="icon">

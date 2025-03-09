@@ -86,7 +86,7 @@ const Navbar = () => {
       <Logo />
 
       {/* Desktop and larger screens: Menu links */}
-      <div className="hidden lg:flex items-center w-full max-w-5xl gap-x-4 justify-end">
+      <div className="hidden lg:flex items-center w-full max-w-5xl gap-x-6 justify-end">
         {navItems.map((item, index) => (
           (item.options || item.heads) ? (
             <DropdownMenu key={index}>

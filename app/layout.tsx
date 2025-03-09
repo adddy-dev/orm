@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { PolicyGenContextProvider } from "@/context/policyGenerator";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function RootLayout({
         className={`${poppins.className} dark`}
       >
         <ClerkProvider>
-          {children}
+          <PolicyGenContextProvider>
+            {children}
+          </PolicyGenContextProvider>
         </ClerkProvider>
       </body>
     </html>

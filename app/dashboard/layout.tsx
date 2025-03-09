@@ -1,6 +1,6 @@
 import React from "react";
 
-import Sidebar from "@/components/essentitals/Sidebar";
+import Sidebar from "@/components/Sidebar";
 import { Header } from "@/components/Header";
 import { Protect } from "@clerk/nextjs";
 import Link from "next/link";

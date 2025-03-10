@@ -2,9 +2,7 @@ import React from "react";
 
 import { IoShieldHalf } from "react-icons/io5";
 import { FaFileCode } from "react-icons/fa";
-import { FaShieldAlt } from "react-icons/fa";
 import { MdOutlineMessage } from "react-icons/md";
-import { IoSettingsOutline } from "react-icons/io5";
 
 import Link from "next/link";
 import Logo from "./Logo";
@@ -28,7 +26,7 @@ export default function Sidebar() {
             <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Policy Copilot </span>
           </Link>
           <Link
-            href="/regulatory-framework"
+            href="/dashboard/regulatory-framework"
             className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
           >
             <GitCompare /> 

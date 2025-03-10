@@ -70,8 +70,8 @@ export default function FrameworkComparisonTool() {
 
   return (
     <div className="bg-background mt-12 mb-16">
-      <div className="w-full max-w-7xl mx-auto">
-        <h1 className="text-4xl text-primary font-bold text-center mb-2 mt-8">Framework Comparison Tool</h1>
+      <div className="w-full max-w-6xl mx-auto">
+        <h1 className="text-3xl text-primary font-bold text-center mb-2 mt-8">Framework Comparison Tool</h1>
         <p className="text-muted-foreground text-center mb-12">Compare regulatory requirements across different jurisdictions</p>
         
         <div className="bg-card rounded-lg p-8 shadow-lg mt-20">
@@ -134,6 +134,9 @@ export default function FrameworkComparisonTool() {
             </Button>
           </div>
         </div>
+        <p className="text-sm text-gray-500 my-2">
+          Disclaimer: It can make mistakes. Please review answers, and give feedback.
+        </p>
       </div>
       
       <Dialog open={showModal} onOpenChange={setShowModal}>

@@ -108,10 +108,7 @@ export const ChatInput = ({
         </Button>
       </div>
       <p className="text-xs text-gray-500 mt-2 px-4 pb-5">
-        I can make mistakes. Please review answers, and give feedback.
-        Acceptable use policy and Licensing Agreement apply.
-        Don&apos;t share confidential information. See Trust Center.
-        Report knowledge gap. v1.0.
+        Disclaimer: I can make mistakes. Please review answers, and give feedback.
       </p>
     </div>
   );

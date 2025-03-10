@@ -2,15 +2,12 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Home, RotateCw, ChevronDown } from "lucide-react";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { Home, RotateCw } from "lucide-react";
 import { ModelSelector } from "./ModelSelector";
 import { SignOutButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 export const Header = ({ title }: { title?: string }) => {
-  const [open, setOpen] = useState(false);
-  const [selectedModel, setSelectedModel] = useState("default-model");
 
   return (
     <div className="flex items-center justify-between px-4 min-h-16 border-b">

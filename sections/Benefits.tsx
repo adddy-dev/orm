@@ -45,7 +45,7 @@ const ADVANTAGES = [
 
 export default function Benefits() {
   return (
-    <div className="bg-background py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-background py-12 px-4 sm:px-6 lg:px-8" id='benefits'>
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-4xl font-extrabold text-primary mb-4">
           Why Choose Our Platform?

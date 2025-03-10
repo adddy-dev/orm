@@ -12,14 +12,14 @@ import Link from 'next/link';
 
 const Footer = () => {
   const quickLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Features', href: '/features' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Benefits', href: '/benefits' },
-    { name: 'Demo', href: '/demo' },
-    { name: 'Pricing', href: '/pricing' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Home', href: '#hero' },
+    { name: 'Features', href: '#features' },
+    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Benefits', href: '#benefits' },
+    { name: 'Demo', href: '#demo' },
+    { name: 'Pricing', href: '#pricing' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   const resources = [
@@ -52,9 +52,9 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="!h-5 !w-5 text-tertiary" />
-                  <a href="mailto:contact@cyberpolicyal.com" className="hover:text-primary/80">
+                  <Link href="mailto:contact@cyberpolicyal.com" className="hover:text-primary/80">
                     contact@aipolicypro.com
-                  </a>
+                  </Link>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="!h-5 !w-5 text-tertiary" />
@@ -148,18 +148,18 @@ const Footer = () => {
               © 2024 AIPolicyPro. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a href="/privacy" className="text-sm text-muted-foreground hover:text-primary">
+              <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">
                 Privacy Policy
-              </a>
-              <a href="/terms" className="text-sm text-muted-foreground hover:text-primary">
+              </Link>
+              <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">
                 Terms of Service
-              </a>
-              <a href="/contact" className="text-sm text-muted-foreground hover:text-primary">
+              </Link>
+              <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">
                 Contact
-              </a>
-              <a href="/about" className="text-sm text-muted-foreground hover:text-primary">
+              </Link>
+              <Link href="/about" className="text-sm text-muted-foreground hover:text-primary">
                 About Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>

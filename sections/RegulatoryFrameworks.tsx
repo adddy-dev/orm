@@ -56,7 +56,7 @@ export default function RegulatoryFrameworks() {
 
   return (
     <div className="text-foreground mt-24 mb-16 p-6 flex flex-col items-center">
-      <div className="w-full max-w-7xl">
+      <div className="w-full max-w-6xl">
         <h1 className="text-4xl text-primary font-bold text-center mb-2">Regulatory Frameworks</h1>
         <p className="text-muted-foreground text-center mb-12">
           Comprehensive coverage of regulatory frameworks across the Middle East
@@ -105,8 +105,8 @@ export default function RegulatoryFrameworks() {
                 >
                   <CardContent className="p-4 flex justify-between items-center">
                     <div>
-                      <h3 className="font-bold text-gray-200">{framework.name}</h3>
-                      <p className="text-gray-400 text-sm">{framework.description}</p>
+                      <h3 className="font-bold text-foreground">{framework.name}</h3>
+                      <p className="text-muted-foreground text-sm">{framework.description}</p>
                     </div>
                     <div>
                       {getStatusBadge(framework.status)}
@@ -118,6 +118,10 @@ export default function RegulatoryFrameworks() {
           </div>
         </div>
 
+        <p className="text-sm text-gray-500 my-2">
+          Disclaimer: It can make mistakes. Please review answers, and give feedback.
+        </p>
+
         <div className="mt-8 flex justify-center">
           <Button 
             className="bg-tertiary hover:bg-tertiary-foreground text-white px-8 py-6 text-lg font-medium rounded-md"
@@ -127,6 +131,7 @@ export default function RegulatoryFrameworks() {
             Compare Frameworks
           </Button>
         </div>
+        
       </div>
 
       <Dialog open={isCompareModalOpen} onOpenChange={setIsCompareModalOpen}>

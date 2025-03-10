@@ -6,7 +6,7 @@ import PolicyGeneratorForm from './PolicyGenerator';
 
 const Demo = () => {
   return (
-    <div className="w-full bg-background py-12 px-4 sm:px-6 lg:px-8">
+    <div className="w-full bg-background py-12 px-4 sm:px-6 lg:px-8" id='demo'>
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-4xl font-bold text-primary mb-4">
           See Our Platform in Action

@@ -36,7 +36,7 @@ const testimonials: Testimonial[] = [
 
 const Testimonials = () => {
   return (
-    <div className="w-full bg-background py-16 px-4 sm:px-6 lg:px-8">
+    <div className="w-full bg-background py-16 px-4 sm:px-6 lg:px-8" id='testimonials'>
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-4xl font-bold text-primary mb-4">
           Trusted by Leading Organizations

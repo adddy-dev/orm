@@ -53,7 +53,7 @@ const About = () => {
   ];
 
   return (
-    <section>
+    <section id='features'>
        <div className="bg-background pt-14 pb-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">

@@ -529,6 +529,9 @@ export default function PolicyGeneratorForm() {
             </Button>
           </>
         )}
+        <p className="text-sm text-gray-500 my-2">
+          Disclaimer: It can make mistakes. Please review answers, and give feedback.
+        </p>
       </div>
 
       <Dialog open={showDialog} onOpenChange={setShowDialog}>

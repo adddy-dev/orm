@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const HeroSec = () => {
   return (
-    <section className='bg-background relative overflow-hidden'>
+    <section className='bg-background relative overflow-hidden' id='hero'>
       <div className='lg:max-w-[80%] xl:px-0 sm:px-8 md:py-24 flex items-center justify-center mx-auto relative z-10
         '>
         {/* Left Column */}

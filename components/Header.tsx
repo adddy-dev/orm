@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Home, RotateCw } from "lucide-react";
-import { ModelSelector } from "./ModelSelector";
 import { SignOutButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 

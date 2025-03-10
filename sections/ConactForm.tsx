@@ -24,7 +24,7 @@ const ContactForm = () => {
 
   const formFields = [
     { name: 'fullname', label: 'Full Name', type: 'text', placeholder: 'Your name' },
-    { name: 'email', label: 'Email', type: 'email', placeholder: 'Your@cyberpolicyal.com' },
+    { name: 'email', label: 'Email', type: 'email', placeholder: 'Your@gmail.com' },
     { name: 'company_name', label: 'Company Name', type: 'text', placeholder: 'Your company name' },
     { name: 'message', label: 'Description', type: 'textarea', placeholder: 'How can we help you ?' },
   ];

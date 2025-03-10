@@ -19,10 +19,10 @@ const LandingPage = () => {
         <HeroSec />
 
         <About />
+        <Demo />
         <FeaturesSec />
         <Services />
         <Benefits />
-        <Demo />
         <Pricing />
         <Testimonials />
         <Footer />

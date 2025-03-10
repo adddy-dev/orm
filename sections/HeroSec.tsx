@@ -9,8 +9,8 @@ const HeroSec = () => {
         '>
         {/* Left Column */}
         <div className="py-16 space-y-8 md:space-y-12 md:-mt-10 mx-8 md:mx-auto lg:w-[80%] text-center">
-          <h1 className="text-[40px] md:text-6xl font-semibold leading-tight">
-            Generate ISMS Policies
+          <h1 className="text-[40px] md:text-4xl font-semibold leading-tight">
+            Generate SAMA CSF, PDPL, CBUAE and ISO 27001 COMPLIANT POLICY IN MINUTES
             <span className="block text-primary">Powered by AI</span>
           </h1>
 
@@ -33,8 +33,9 @@ const HeroSec = () => {
         </div>
 
       </div>
-      <video autoPlay loop muted className='md:w-full w-auto xl:h-auto h-full absolute top-0 left-0 object-cover z-1'>
-        <source src='./bgVid.mp4' type="video/mp4" />
+      <video preload='auto' autoPlay loop muted className='md:w-full w-auto xl:h-auto h-full absolute top-0 left-0 object-cover z-1'>
+        <source src='/bgVid.mp4' type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
     </section>
   )

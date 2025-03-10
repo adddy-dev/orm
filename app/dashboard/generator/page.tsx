@@ -137,7 +137,7 @@ const PolicyGenerator = () => {
         </div>
         <div className='text-center'>
           <p className="text-base my-12 text-muted-foreground">
-            Help us improve ISMS Copilot for you!
+            Help us improve AIPolicyPro for you!
             <Link href="/dashboard/generate" className="hover:text-secondary font-bold text-accent-foreground"> Share your feedback here.</Link>
           </p>
         </div>

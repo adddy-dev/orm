@@ -29,25 +29,7 @@ export const Header = ({ title }: { title?: string }) => {
             </Button>
           </SignOutButton>
         </nav>
-        : <>
-
-          <div className="flex items-center gap-4">
-            <Dialog open={open} onOpenChange={setOpen}>
-              <DialogTitle>
-                <Button variant={"ghost"} onClick={() => setOpen(true)}>
-                  {selectedModel}
-                </Button>
-              </DialogTitle>
-              <DialogTrigger>
-                <ChevronDown className="w-4 h-4 -ml-4" />
-              </DialogTrigger>
-              <DialogContent className="p-0">
-                <ModelSelector setModel={setSelectedModel} setOpen={setOpen} />
-              </DialogContent>
-            </Dialog>
-          </div>
-
-          <div className="flex items-center gap-2">
+        : <div className="flex items-center justify-end w-full gap-2">
             <Button variant="ghost" size="sm">
               Help
             </Button>
@@ -62,9 +44,7 @@ export const Header = ({ title }: { title?: string }) => {
             <Button onClick={() => location.reload()} variant="ghost" size="icon">
               <RotateCw className="h-5 w-5" />
             </Button>
-          </div>
-
-        </>}
+          </div>}
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { 
   Zap, 
   SlidersVertical, 
@@ -8,6 +7,7 @@ import {
   FileChartColumnIncreasing, 
   Users 
 } from "lucide-react";
+import Image from 'next/image';
 
 const FEATURES = [
   {
@@ -51,36 +51,12 @@ const About = () => {
     "Your data stays safe",
   ]
 
-  const feat = [
-    {
-       main: 'Enhanced Efficiency',
-       para: 'Streamlines security management, saving valuable time and resources for SMEs and larger organizations.',
-       vid: '/vid1.mp4',
-    },
-    {
-       main: 'Seamless Security',
-       para: 'Experience streamlined security management with our solution, engineered for optimal efficiency.',
-       vid: '/vid1.mp4',
-    },
-    {
-       main: 'Revew, Edit & Update',
-       para: 'Automated review of your existing security policies and get a detailed gap analysis',
-       vid: '/vid1.mp4',
-    },
-    {
-       main: 'Tailored Policies',
-       para: 'Our AI-powered generator crafts policies specific to your needs, ensuring compliance and a streamlined creation process.',
-       vid: '/vid1.mp4',
-    }
- ]
-
   return (
     <section className='bg-foreground' id='about'>
-      <div className="w-full lg:pl-[4%] text-background py-6 flex flex-col md:flex-row items-center">
-        <div className='mx-auto px-6 py-12 md:py-24 lg:w-[55%]'>
+      <div className="w-full lg:pl-[4%] text-background flex flex-col md:flex-row items-center">
+        <div className='mx-auto px-6 py-12 md:py-20 lg:w-[55%]'>
           <h2 className="text-[32px] md:text-4xl font-bold mb-8 md:mb-10 leading-[40px] md:leading-tight">
-            Transform your<br />
-            <span className="text-primary">Information Security Policy docs</span><br />
+            <span className="text-primary">Information and Cyber Security Docs</span><br />
             with AI Support!
           </h2>
 
@@ -101,43 +77,12 @@ const About = () => {
           </div>
         </div>
         <div className="md:mb-0 mb-10 pl-16 md:pl-0 flex justify-end lg:w-[34%]">
-          <img
+          <Image
+            width={300}
+            height={300}
             src="/featImage.png"
             alt="Hand"
             className='object-cover h-auto w-full' />
-        </div>
-      </div>
-      <div className="bg-background pt-14 pb-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-extrabold text-primary mb-4">
-              Powerful Features for Your Security Policies
-            </h1>
-            <p className="text-base text-muted-foreground">
-              Leverage AI-powered tools to streamline your ISMS documentation process
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {FEATURES.map((feature, index) => (
-              <Card 
-                key={index} 
-                className="hover:shadow-lg hover:border-secondary transition-all duration-300"
-              >
-                <CardHeader className="flex space-y-4 pb-2">
-                  <span className="w-min bg-muted-foreground p-3 rounded-full">
-                    {feature.icon}
-                  </span>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-muted-foreground text-base">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
       </div>
     </section>

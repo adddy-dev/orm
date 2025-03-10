@@ -18,7 +18,7 @@ export default function Sidebar() {
       </div>
 
       <div className="flex flex-col space-y-2 px-4 mb-6">
-        <h2 className="ml-4 font-bold">General</h2>
+        <h2 className="ml-4 font-bold">Services</h2>
         <div className="flex flex-col space-y-2">
           <Link
             href="/dashboard/default-model"
@@ -45,7 +45,7 @@ export default function Sidebar() {
       </div>
 
       <div className="flex flex-col space-y-2 px-4 mb-6">
-        <h2 className="ml-4 font-bold">More Services</h2>
+        <h2 className="ml-4 font-bold">Industry</h2>
         <div className="flex flex-col space-y-2">
           <Link
             href="/dashboard"
@@ -129,21 +129,8 @@ export default function Sidebar() {
             href="/dashboard"
             className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
           >
-            <FaShieldAlt /> 
-            <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Trust Center </span>
-          </Link>
-          <Link
-            href="/dashboard"
-            className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
-          >
             <MdOutlineMessage /> 
             <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Contact Support </span>
-          </Link>
-          <Link
-            href="/dashboard/user-settings"
-            className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
-          >
-            <IoSettingsOutline /> Settings
           </Link>
         </div>
       </div>

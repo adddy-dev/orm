@@ -7,6 +7,8 @@ import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin } from 'lucide-react';
 import Logo from '@/components/Logo';
 import { Label } from '@/components/ui/label';
 import ContactForm from './ConactForm';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   const quickLinks = [
@@ -51,7 +53,7 @@ const Footer = () => {
                 <div className="flex items-center gap-3">
                   <Mail className="!h-5 !w-5 text-tertiary" />
                   <a href="mailto:contact@cyberpolicyal.com" className="hover:text-primary/80">
-                    contact@cyberpolicyal.com
+                    contact@aipolicypro.com
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
@@ -74,7 +76,7 @@ const Footer = () => {
         </div>
 
         {/* Footer Links Section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-12 pt-20 border-t border-border">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 pt-20 border-t border-border">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-primary">
@@ -94,6 +96,13 @@ const Footer = () => {
                 <Linkedin className="!h-5 !w-5" />
               </Button>
             </div>
+            <Image 
+              src={'/ca_logo.svg'}
+              alt="CyberAssured Logo"
+              width={200}
+              height={100}
+              className="object-cover pt-20 block"
+            />
           </div>
 
           {/* Quick Links */}
@@ -102,29 +111,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a 
+                  <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors text-base"
                   >
                     {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2">
-              {resources.map((link) => (
-                <li key={link.name}>
-                  <a 
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -153,7 +145,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-muted-foreground">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © 2024 CyberPolicy AI. All rights reserved.
+              © 2024 AIPolicyPro. All rights reserved.
             </p>
             <div className="flex gap-6">
               <a href="/privacy" className="text-sm text-muted-foreground hover:text-primary">

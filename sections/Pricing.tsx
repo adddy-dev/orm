@@ -6,7 +6,7 @@ const Pricing = () => {
   const pricingPlans = [
     {
       name: "Starter",
-      price: "$299",
+      price: "$100",
       features: [
         "Up to 5 policy templates",
         "Basic AI customization",
@@ -17,7 +17,7 @@ const Pricing = () => {
     },
     {
       name: "Professional",
-      price: "$599",
+      price: "$250",
       popular: true,
       features: [
         "Unlimited policy templates",

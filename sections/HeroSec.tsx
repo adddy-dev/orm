@@ -10,7 +10,7 @@ const HeroSec = () => {
         {/* Left Column */}
         <div className="py-16 space-y-8 md:space-y-12 md:-mt-10 mx-8 md:mx-auto lg:w-[80%] text-center">
           <h1 className="text-[40px] md:text-4xl font-semibold leading-tight">
-            Generate SAMA CSF, PDPL, CBUAE and ISO 27001 COMPLIANT POLICY IN MINUTES
+            Generate SAMA CSF, PDPL, NESA IAR and ISO 27001 COMPLIANT POLICY IN MINUTES
             <span className="block text-primary">Powered by AI</span>
           </h1>
 

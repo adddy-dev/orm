@@ -54,39 +54,6 @@ const About = () => {
 
   return (
     <section id='features'>
-       <div className="bg-background pt-14 pb-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-extrabold text-primary mb-4">
-              Powerful Features for Your Security Policies
-            </h1>
-            <p className="text-base text-muted-foreground">
-              Leverage AI-powered tools to streamline your ISMS documentation process
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {FEATURES.map((feature, index) => (
-              <Card 
-                key={index} 
-                className="hover:shadow-lg hover:border-secondary transition-all duration-300"
-              >
-                <CardHeader className="flex space-y-4 pb-2">
-                  <span className="w-min bg-muted-foreground p-3 rounded-full">
-                    {feature.icon}
-                  </span>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-muted-foreground text-base">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div>
       <div className="bg-background py-10 px-4 sm:px-6 lg:px-8 flex items-center">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Features */}

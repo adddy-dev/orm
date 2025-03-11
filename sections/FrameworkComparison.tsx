@@ -93,7 +93,7 @@ export default function FrameworkComparisonTool() {
             </div>
             
             <div className="flex items-center justify-center w-12 h-12 bg-tertiary rounded-full my-4 md:my-0">
-              <ArrowLeftRight className="w-6 h-6 text-white" />
+              <ArrowLeftRight className="w-6 h-6 text-foreground" />
             </div>
             
             <div className="w-full md:w-4/12">

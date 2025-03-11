@@ -70,11 +70,8 @@ const Testimonials = () => {
 
               {/* Author Info */}
               <div className="space-y-1">
-                <div className="font-semibold text-primary">
-                  {testimonial.author}
-                </div>
                 <div className="text-sm text-muted-foreground">
-                  {testimonial.position}, {testimonial.company}
+                  {testimonial.position}
                 </div>
               </div>
             </CardContent>

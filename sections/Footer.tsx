@@ -9,14 +9,13 @@ import { Label } from '@/components/ui/label';
 import ContactForm from './ConactForm';
 import Image from 'next/image';
 import Link from 'next/link';
+import { SignedIn } from '@clerk/nextjs';
 
 const Footer = () => {
   const quickLinks = [
     { name: 'Home', href: '#hero' },
-    { name: 'Features', href: '#features' },
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
-    { name: 'Benefits', href: '#benefits' },
     { name: 'Demo', href: '#demo' },
     { name: 'Pricing', href: '#pricing' },
     { name: 'Contact', href: '#contact' },
@@ -86,29 +85,36 @@ const Footer = () => {
               Empowering Middle East SMEs with AI-driven ISMS policy generation and management solutions.
             </p>
             <div className="flex gap-4">
-              <Button variant="ghost" size="icon">
-                <Facebook className="!h-5 !w-5" />
-              </Button>
-              <Button variant="ghost" size="icon">
-                <Twitter className="!h-5 !w-5" />
-              </Button>
-              <Button variant="ghost" size="icon">
-                <Linkedin className="!h-5 !w-5" />
-              </Button>
+              <Link href={'https://www.linkedin.com/company/106259682'}>
+                <Button variant="ghost" size="icon">
+                  <Linkedin className="!h-5 !w-5" />
+                </Button>
+              </Link>
             </div>
-            <Image 
-              src={'/ca_logo.svg'}
-              alt="CyberAssured Logo"
-              width={200}
-              height={100}
-              className="object-cover pt-20 block"
-            />
+            <div className=' pt-18'>
+              Powered by
+              <Image 
+                src={'/ca_logo.svg'}
+                alt="CyberAssured Logo"
+                width={200}
+                height={100}
+                className="object-cover pt-2 block"
+              />
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
+              <SignedIn>
+                <li>
+                  <Link href={'/dashboard'}
+                    className="text-muted-foreground hover:text-primary transition-colors text-base">
+                    Dashboard
+                  </Link>
+                </li>
+              </SignedIn>
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link

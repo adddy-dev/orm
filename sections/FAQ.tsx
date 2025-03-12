@@ -19,7 +19,7 @@ const FAQSection = () => {
     },
     {
       "question": "What security measures protect my data?",
-      "answer": "We implement enterprise-grade security measures including:\n• Multi-factor authentication for all accounts\n• AES-256 encryption for data at rest\n• Regular third-party security audits\n• Continuous security monitoring\n• AWS RDS secure infrastructure\n• Comprehensive security controls across all systems"
+      "answer": "We implement enterprise-grade security measures including:<br />• Multi-factor authentication for all accounts<br />• AES-256 encryption for data at rest<br />• Regular third-party security audits<br />• Continuous security monitoring<br />• AWS RDS secure infrastructure<br />• Comprehensive security controls across all systems"
     },
     {
       "question": "Do you offer lifetime access?",
@@ -31,7 +31,7 @@ const FAQSection = () => {
     },
     {
       "question": "What's the typical policy creation timeline?",
-      "answer": "The process is remarkably efficient:\n• Form completion: 5-10 minutes\n• Policy generation: Under 2 minutes\n• Total time investment: Approximately 15 minutes per policy"
+      "answer": "The process is remarkably efficient:<br />• Form completion: 5-10 minutes<br />• Policy generation: Under 2 minutes<br />• Total time investment: Approximately 15 minutes per policy"
     },
     {
       "question": "Will these policies guarantee ISO 27001 compliance?",
@@ -39,7 +39,7 @@ const FAQSection = () => {
     },
     {
       "question": "How does your tool support SAMA CSF compliance?",
-      "answer": "Our policy generator includes specific mappings to SAMA Cyber Security Framework requirements. The generated policies incorporate SAMA CSF controls and requirements, helping financial institutions in Saudi Arabia create documentation that aligns with:\n• SAMA Security Governance requirements\n• Cybersecurity Risk Management frameworks\n• Third-party security management\n• Asset management and data protection guidelines. While the policies provide a strong foundation, organizations should customize them to their specific SAMA compliance needs."
+      "answer": "Our policy generator includes specific mappings to SAMA Cyber Security Framework requirements. The generated policies incorporate SAMA CSF controls and requirements, helping financial institutions in Saudi Arabia create documentation that aligns with:<br />• SAMA Security Governance requirements<br />• Cybersecurity Risk Management frameworks<br />• Third-party security management<br />• Asset management and data protection guidelines. While the policies provide a strong foundation, organizations should customize them to their specific SAMA compliance needs."
     },
     {
       "question": "Can the policies be generated in both English and Arabic?",
@@ -47,27 +47,27 @@ const FAQSection = () => {
     },
     {
       "question": "Are the policies aligned with UAE's PDPL requirements?",
-      "answer": "Our policy generator incorporates the latest UAE Personal Data Protection Law (PDPL) requirements. The policies include:\n• Data privacy controls and requirements\n• Data subject rights management\n• Cross-border data transfer guidelines\n• Data breach notification procedures\n• Privacy impact assessment frameworks"
+      "answer": "Our policy generator incorporates the latest UAE Personal Data Protection Law (PDPL) requirements. The policies include:<br />• Data privacy controls and requirements<br />• Data subject rights management<br />• Cross-border data transfer guidelines<br />• Data breach notification procedures<br />• Privacy impact assessment frameworks"
     },
     {
       "question": "How do these policies support CBUAE compliance?",
-      "answer": "The generated policies are aligned with Central Bank of UAE's cybersecurity requirements. They cover:\n• Information Security controls as per CBUAE framework\n• Consumer data protection requirements\n• Digital banking security measures\n• Third-party risk management\n• Incident response procedures specific to financial institutions"
+      "answer": "The generated policies are aligned with Central Bank of UAE's cybersecurity requirements. They cover:<br />• Information Security controls as per CBUAE framework<br />• Consumer data protection requirements<br />• Digital banking security measures<br />• Third-party risk management<br />• Incident response procedures specific to financial institutions"
     },
     {
       "question": "Can the policies be customized for different GCC jurisdictions?",
-      "answer": "Absolutely. Our tool allows jurisdiction-specific customization for:\n• UAE requirements (PDPL, CBUAE, NESA)\n• Saudi requirements (SAMA, NCA, CITC)\n• Bahrain requirements (CBB)"
+      "answer": "Absolutely. Our tool allows jurisdiction-specific customization for:<br />• UAE requirements (PDPL, CBUAE, NESA)<br />• Saudi requirements (SAMA, NCA, CITC)<br />• Bahrain requirements (CBB)"
     },
     {
       "question": "How often are the policies updated for regional regulatory changes?",
-      "answer": "We continuously monitor GCC regulatory changes and update our policy templates accordingly. This includes:\n• Quarterly reviews of regulatory updates\n• Immediate updates for major regulatory changes\n• Notification to customers when significant updates occur\n• Option to regenerate policies with latest regulatory requirements"
+      "answer": "We continuously monitor GCC regulatory changes and update our policy templates accordingly. This includes:<br />• Quarterly reviews of regulatory updates<br />• Immediate updates for major regulatory changes<br />• Notification to customers when significant updates occur<br />• Option to regenerate policies with latest regulatory requirements"
     },
     {
       "question": "Does the tool support sector-specific requirements in the GCC?",
-      "answer": "Yes, our tool generates policies tailored to specific sectors including:\n• Financial Services (SAMA, CBUAE requirements)\n• Healthcare (regional health authority requirements)\n• Government entities (e-government standards)\n• Telecommunications (regulatory authority requirements)"
+      "answer": "Yes, our tool generates policies tailored to specific sectors including:<br />• Financial Services (SAMA, CBUAE requirements)<br />• Healthcare (regional health authority requirements)<br />• Government entities (e-government standards)<br />• Telecommunications (regulatory authority requirements)"
     },
     {
       "question": "How do these policies align with local data residency requirements?",
-      "answer": "Our generated policies incorporate GCC data residency requirements, including:\n• UAE data localization rules\n• Saudi Arabia's data sovereignty requirements\n• Cross-border data transfer restrictions\n• Local hosting requirements\n• Data classification aligned with local standards"
+      "answer": "Our generated policies incorporate GCC data residency requirements, including:<br />• UAE data localization rules<br />• Saudi Arabia's data sovereignty requirements<br />• Cross-border data transfer restrictions<br />• Local hosting requirements<br />• Data classification aligned with local standards"
     }
   ]  
 
@@ -97,11 +97,10 @@ const FAQSection = () => {
                   <span className="text-sm md:text-base font-semibold">{faq.question}</span>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base flex-grow">
-                  {faq.answer}
+                  <p dangerouslySetInnerHTML={{ __html: faq.answer }}></p>
                 </AccordionContent>
               </AccordionItem>
-            ))}
-          </div>
+            ))}          </div>
           <div className='self-start flex flex-col gap-y-4'>
             {faqs.map((faq, index) => (
               (index >= faqs.length/2) ? 
@@ -115,7 +114,7 @@ const FAQSection = () => {
                   <span className="text-sm md:text-base font-semibold">{faq.question}</span>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base flex-grow">
-                  {faq.answer}
+                  <p dangerouslySetInnerHTML={{ __html: faq.answer }}></p>
                 </AccordionContent>
               </AccordionItem> : null
             ))}

@@ -124,7 +124,7 @@ const FAQSection = () => {
       </div>
       <div className='text-center'>
         <p className="text-base text-accent-foreground mt-12">
-          Question not answered above ? <Link href="#" className="hover:text-secondary">Contact us</Link>
+          Question not answered above ? <Link href="#contact" className="hover:text-tertiary">Contact us</Link>
         </p>
       </div>
     </div>

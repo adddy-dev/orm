@@ -75,7 +75,7 @@ const Footer = () => {
         </div>
 
         {/* Footer Links Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 pt-20 border-t border-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12 pt-20 border-t border-border">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-primary">
@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className='flex flex-col items-center'>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <SignedIn>
@@ -116,7 +116,7 @@ const Footer = () => {
                 </li>
               </SignedIn>
               {quickLinks.map((link) => (
-                <li key={link.name}>
+                <li key={link.name} className='text-center'>
                   <Link
                     href={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors text-base"
@@ -129,7 +129,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter */}
-          <div>
+          {/* <div>
             <h3 className="font-semibold mb-4">Newsletter</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Stay updated with our latest features and releases.
@@ -144,7 +144,7 @@ const Footer = () => {
                 Subscribe
               </Button>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Bar */}
@@ -160,10 +160,10 @@ const Footer = () => {
               <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">
                 Terms of Service
               </Link>
-              <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">
+              <Link href="#/contact" className="text-sm text-muted-foreground hover:text-primary">
                 Contact
               </Link>
-              <Link href="/about" className="text-sm text-muted-foreground hover:text-primary">
+              <Link href="#about" className="text-sm text-muted-foreground hover:text-primary">
                 About Us
               </Link>
             </div>

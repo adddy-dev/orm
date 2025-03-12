@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const HeroSec = () => {
   return (
-    <section className='bg-background relative overflow-hidden' id='hero'>
+    <section className='bg-background relative overflow-hidden h-[calc(100vh-80px)]' id='hero'>
       <div className='lg:max-w-[80%] xl:px-0 sm:px-8 md:py-24 flex items-center justify-center mx-auto relative z-10
         '>
         {/* Left Column */}
@@ -18,7 +18,7 @@ const HeroSec = () => {
             Transform your security documentation with intelligent AI support. Create, customize, and enhance ISMS policies effortlessly for your organization.
           </p>
 
-          <div className="flex flex-col gap-y-6 gap-x-16 md:flex-row md:justify-center px-4 py-8 md:p-0">
+          <div className="flex flex-col gap-y-6 gap-x-12 md:flex-row md:justify-center px-4 py-8 md:p-0">
             <ButtonOne>
               Get a demo
             </ButtonOne>

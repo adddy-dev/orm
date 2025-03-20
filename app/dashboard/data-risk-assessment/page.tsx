@@ -88,12 +88,10 @@ const DataTransferRiskAssessment = () => {
       setCurrentStep(currentStep + 1);
     }
   };
-  console.log(`${currentStep} selected`);
 
   const handlePrevious = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
-      console.log(`prev ${currentStep} selected`);
     }
   };
   
@@ -833,7 +831,15 @@ const DataTransferRiskAssessment = () => {
               </button>
             )}
             
-            {currentStep < 8 ? (
+            {currentStep === 8 && (
+              <button
+                type="submit"
+                className="px-4 py-2 bg-green-600 text-foreground rounded-md hover:bg-green-700"
+              >
+                Submit Assessment
+              </button>
+            )}
+            {currentStep < 8 && (
               <button
                 type="button"
                 onClick={handleNext}
@@ -841,14 +847,8 @@ const DataTransferRiskAssessment = () => {
               >
                 Next
               </button>
-            ) : currentStep === 8 ? (
-              <button
-                type="submit"
-                className="px-4 py-2 bg-green-600 text-foreground rounded-md hover:bg-green-700"
-              >
-                Submit Assessment
-              </button>
-            ) : (
+            )} 
+            {currentStep === 9 && (
               <button
                 type="button"
                 onClick={() => setCurrentStep(1)}

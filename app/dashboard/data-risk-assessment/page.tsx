@@ -1,11 +1,11 @@
 'use client';
 
-
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import React, { useState } from 'react';
 
 const DataTransferRiskAssessment = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [geoLocation, setGeoLocation] = useState('');
   const [formData, setFormData] = useState({
     // Preparation Phase
     involveSensitiveData: false,
@@ -447,7 +447,7 @@ const DataTransferRiskAssessment = () => {
                     <SelectItem value="public-cloud">Public cloud</SelectItem>
                     <SelectItem value="private-cloud">Private cloud</SelectItem>
                     <SelectItem value="hybrid-cloud">Hybrid cloud</SelectItem>
-                    <SelectItem value="on-premises">On-premises/Entity&apos;s headquarters</SelectItem>
+                    <SelectItem value="on-premises">On-premises/Entity's headquarters</SelectItem>
                     <SelectItem value="third-party">Third-party data center</SelectItem>
                     <SelectItem value="other">Other storage location</SelectItem>
                   </SelectContent>
@@ -813,7 +813,7 @@ const DataTransferRiskAssessment = () => {
               <div className="p-4 rounded-lg">
                 <h3 className="font-bold text-lg mb-2">Important Disclaimer:</h3>
                 <p className="text-sm text-muted-foreground">
-                  This assessment tool is based on the SDAIA&apos;s &quot;Risk Assessment Guideline for Transferring Personal Data Outside the Kingdom&quot; and is provided for guidance purposes only. The results are not legally binding and should be used as a starting point for your compliance efforts. Always consult with legal professionals familiar with Saudi data protection law for specific advice.
+                  This assessment tool is based on the SDAIA's "Risk Assessment Guideline for Transferring Personal Data Outside the Kingdom" and is provided for guidance purposes only. The results are not legally binding and should be used as a starting point for your compliance efforts. Always consult with legal professionals familiar with Saudi data protection law for specific advice.
                 </p>
               </div>
             </div>

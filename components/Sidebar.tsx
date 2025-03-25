@@ -10,6 +10,10 @@ import { ChartCandlestick, GitCompare } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 
 export default function Sidebar() {
+
+  const industryFrames = ['Financial Services', 'Healthcare', 'Non-profit Organizations', 'Food & Beverages', 'Energy & Utility', 'Manufacturing'];
+  const frameworks = ['GDPR', 'CCPA', 'HIPAA', 'CCPA', 'CCPA', 'CCPA'];
+
   return (
     <nav className="w-64 border-r h-screen py-4 px-1 pb-0 overflow-y-auto" style={{ scrollbarWidth: "none" }}>
       <div className="flex items-center gap-2 px-4 mt-2 mb-6">
@@ -57,42 +61,17 @@ export default function Sidebar() {
               <h2 className="text-base ml-4 font-bold">Industry</h2>
             </AccordionTrigger>
             <AccordionContent>
-              <Link
-                href="/dashboard"
-                className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
-              >
-                <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Financial Services </span>
-              </Link>
-              <Link
-                href="/dashboard"
-                className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
-              >
-                <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Healthcare </span>
-              </Link>
-              <Link
-                href="/dashboard"
-                className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
-              >
-                <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Non-profit Organizations </span>
-              </Link>
-              <Link
-                href="/dashboard"
-                className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
-              >
-                <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Food & Beverages </span>
-              </Link>
-              <Link
-                href="/dashboard"
-                className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
-              >
-                <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Energy & Utility </span>
-              </Link>
-              <Link
-                href="/dashboard"
-                className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
-              >
-                <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Manufacturing </span>
-              </Link>
+              {industryFrames.map((industry, index) => (
+                <Link
+                  key={index}
+                  href={`/dashboard/industry-frameworks/${industry}`}
+                  className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
+                >
+                  <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap">{industry}</span>
+                </Link>
+              ))
+            }
+              
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">

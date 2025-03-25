@@ -10,6 +10,7 @@ import Demo from '@/sections/Demo';
 import Testimonials from '@/sections/Testimonials';
 import Footer from '@/sections/Footer';
 import FAQSection from '@/sections/FAQ';
+import Contacts from '@/sections/Contacts';
 
 const LandingPage = () => {
   return (
@@ -27,6 +28,7 @@ const LandingPage = () => {
         <Pricing />
         <FAQSection />
         <Testimonials />
+        <Contacts />
         <Footer />
       </main>
     </div>

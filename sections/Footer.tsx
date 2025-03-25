@@ -1,15 +1,10 @@
 import React from 'react';
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin } from 'lucide-react';
 import Logo from '@/components/Logo';
-import { Label } from '@/components/ui/label';
-import ContactForm from './ConactForm';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SignedIn } from '@clerk/nextjs';
+import { Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const quickLinks = [
@@ -29,50 +24,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-background text-primary pt-16 pb-8" id="contact">
-      <div className="max-w-7xl mx-auto text-center mb-12">
-        <h2 className="text-4xl font-bold text-primary mb-4">
-          Get in Touch
-        </h2>
-        <p className="text-base text-muted-foreground">
-          Have questions about our AI-powered ISMS policy generator? We're here to help
-        </p>
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {/* Contact Information Card */}
-          <Card className="bg-card h-min">
-            <CardContent className="p-8">
-              <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Phone className="!h-5 !w-5 text-tertiary" />
-                  <span>+971 4 123 4567</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="!h-5 !w-5 text-tertiary" />
-                  <Link href="mailto:contact@cyberpolicyal.com" className="hover:text-primary/80">
-                    contact@aipolicypro.com
-                  </Link>
-                </div>
-                <div className="flex items-center gap-3">
-                  <MapPin className="!h-5 !w-5 text-tertiary" />
-                  <span>Dubai Internet City, UAE</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Contact Form Card */}
-          <Card className="bg-card hover:border-primary transition-colors">
-            <CardContent className="py-6 px-8 space-y-4">
-              <ContactForm />
-              <Button className="w-full bg-primary hover:bg-primary/90">
-                Send Message
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
+    <footer className="bg-background text-primary pt-16 pb-8">
 
         {/* Footer Links Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12 pt-20 border-t border-border">
@@ -169,7 +121,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
     </footer>
   );
 };

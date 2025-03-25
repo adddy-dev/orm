@@ -1,16 +1,42 @@
 'use client'
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from 'next/link';
 import Logo from '@/components/Logo';
 import { usePolicyGenContext } from '@/context/policyGenerator';
 import { redirect } from 'next/navigation';
+import Footer from '@/sections/Footer';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 const PolicyGenerator = () => {
 
   const {setPolicy} = usePolicyGenContext();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    category: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target as HTMLInputElement;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log('Feedback submitted:', formData);
+  };
 
   const policies = [
     { name: "Acceptable Use Policy", status: "generate" },
@@ -120,61 +146,116 @@ const PolicyGenerator = () => {
             ))}
           </CardContent>
         </Card>
-        <Button
-          className="mt-4 mx-auto block border-primary text-primary hover:bg-primary hover:text-accent-foreground px-12"
-          variant="outline">
-          Upgrade
-        </Button>
         <div className='my-20'>
           <p className="text-4xl text-center py-4">
             Need some adjustments ?
           </p>
-          <Button
-            className="mt-4 h-10 mx-auto block border-primary bg-muted text-accent-foreground hover:bg-primary text-base px-8"
-            variant="default">
-            Update your policies with the policy assistant
-          </Button>
+          <Link href={'/dashboard/default-model'}>
+            <Button
+              className="mt-4 h-10 mx-auto block border-primary bg-muted text-accent-foreground hover:bg-primary text-base px-8"
+              variant="default">
+              Update your policies with the policy assistant
+            </Button>
+          </Link>
         </div>
         <div className='text-center'>
-          <p className="text-base my-12 text-muted-foreground">
+          <p className="text-base my-4 text-muted-foreground">
             Help us improve AIPolicyPro for you!
-            <Link href="/dashboard/generate" className="hover:text-secondary font-bold text-accent-foreground"> Share your feedback here.</Link>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button 
+                  variant="default" 
+                  className="hover:text-primary font-bold text-accent-foreground bg-transparent"
+                >
+                  Share your feedback here.
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="bg-background text-foreground border-border">
+                <DialogHeader>
+                  <DialogTitle className="text-foreground">
+                    Share Your Feedback
+                  </DialogTitle>
+                </DialogHeader>
+                
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-foreground">Name</Label>
+                      <Input 
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Your name"
+                        className="bg-input text-foreground border-border"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-foreground">Email</Label>
+                      <Input 
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="Your email"
+                        className="bg-input text-foreground border-border"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="category" className="text-foreground">Feedback Category</Label>
+                    <Select 
+                      name="category"
+                      onValueChange={(value) => setFormData(prev => ({...prev, category: value}))}
+                    >
+                      <SelectTrigger className="bg-input text-foreground border-border">
+                        <SelectValue placeholder="Select a category" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-popover text-popover-foreground border-border">
+                        <SelectItem value="general">General Feedback</SelectItem>
+                        <SelectItem value="bug">Report a Bug</SelectItem>
+                        <SelectItem value="feature">Feature Request</SelectItem>
+                        <SelectItem value="support">Support</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-foreground">Your Message</Label>
+                    <Textarea 
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Write your feedback here..."
+                      className="bg-input text-foreground border-border min-h-[120px]"
+                    />
+                  </div>
+                  
+                  <div className="flex justify-end space-x-2">
+                    <Button 
+                      type="button" 
+                      variant="secondary" 
+                      className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                    >
+                      Cancel
+                    </Button>
+                    <Button 
+                      type="submit" 
+                      className="bg-primary text-primary-foreground hover:bg-primary/90"
+                    >
+                      Submit Feedback
+                    </Button>
+                  </div>
+                </form>
+              </DialogContent>
+            </Dialog>
           </p>
         </div>
-        <footer className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-4 gap-8">
-            {/* Logo Section */}
-            <div>
-              <div className="flex items-center gap-2">
-                <Logo />
-              </div>
-            </div>
-
-            {/* Links Sections */}
-            {footerSections.map((section) => (
-              <div key={section.title}>
-                <h3 className="font-semibold text-accent-foreground mb-4">{section.title}</h3>
-                <ul className="space-y-3">
-                  {section.links.map((link) => (
-                    <li key={link.text}>
-                      <a
-                        href={link.href}
-                        className="text-muted-foreground hover:text-accent-foreground transition-colors"
-                      >
-                        {link.text}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* Copyright */}
-          <div className="mt-12">
-            <p className="text-muted-foreground">© 2024 AIPollicyPro. All rights reserved.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );

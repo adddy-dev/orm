@@ -1,6 +1,6 @@
 'use server'
 
-import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
+import { Card, CardContent, CardHeader } from "./ui/card";
 
 export interface Regulation {
   framework: string;

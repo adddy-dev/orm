@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from 'next/link';
-import Logo from '@/components/Logo';
 import { usePolicyGenContext } from '@/context/policyGenerator';
 import { redirect } from 'next/navigation';
 import Footer from '@/sections/Footer';
@@ -67,42 +66,6 @@ const PolicyGenerator = () => {
     { name: "Information Transfer Policy", status: "generate" },
     { name: "Logging and Monitoring Policy", status: "generate" },
     { name: "Software Acquisition Policy", status: "generate" }
-  ];
-
-  const footerSections = [
-    {
-      title: "Support",
-      links: [
-        { text: "Troubleshooting", href: "#" },
-        { text: "Contact", href: "#" },
-        { text: "Refunds", href: "#" },
-        { text: "Report Security Issue", href: "#" },
-        { text: "Roadmap", href: "#" },
-        { text: "Release notes", href: "#" },
-      ]
-    },
-    {
-      title: "Products",
-      links: [
-        { text: "Policy Generator", href: "#" },
-        { text: "Risk Assessment", href: "#" },
-        { text: "ISO 27001 Copilot", href: "#" },
-        { text: "ISO 27001 Course", href: "#" },
-        { text: "Partner Programme", href: "#" },
-        { text: "More services", href: "#" },
-      ]
-    },
-    {
-      title: "Legal & Security",
-      links: [
-        { text: "Acceptable use policy", href: "#" },
-        { text: "Privacy Policy", href: "#" },
-        { text: "Trust Center", href: "#" },
-        { text: "Terms and Conditions", href: "#" },
-        { text: "Data Processing Agreement", href: "#" },
-        { text: "Licensing Agreement", href: "#" },
-      ]
-    }
   ];
 
   function handlePolicyGeneration(policyName: string) {

@@ -12,7 +12,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./
 export default function Sidebar() {
 
   const industryFrames = ['Financial Services', 'Healthcare', 'Non-profit Organizations', 'Food & Beverages', 'Energy & Utility', 'Manufacturing'];
-  const frameworks = ['GDPR', 'CCPA', 'HIPAA', 'CCPA', 'CCPA', 'CCPA'];
 
   return (
     <nav className="w-64 border-r h-screen py-4 px-1 pb-0 overflow-y-auto" style={{ scrollbarWidth: "none" }}>
@@ -69,8 +68,7 @@ export default function Sidebar() {
                 >
                   <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap">{industry}</span>
                 </Link>
-              ))
-            }
+              ))}
               
             </AccordionContent>
           </AccordionItem>

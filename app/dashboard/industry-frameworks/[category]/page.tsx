@@ -1192,8 +1192,8 @@ const categories: RegulationGrid = {
   ],
 };
 
-const Page = ({ params }: { params: { category: string } }) => {
-  const { category } = params;
+const Page = async ({ params }: { params: Promise<{ category: string }> }) => {
+  const { category } = await params;
 
   // Decode and safely access the category data
   const decodedCategory = decodeURIComponent(category);

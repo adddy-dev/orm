@@ -6,7 +6,7 @@ import { MdOutlineMessage } from "react-icons/md";
 
 import Link from "next/link";
 import Logo from "./Logo";
-import { ChartCandlestick, GitCompare } from "lucide-react";
+import { ChartCandlestick, ChartLine, GitCompare } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 
 export default function Sidebar() {
@@ -42,6 +42,13 @@ export default function Sidebar() {
           >
             <ChartCandlestick />
             <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Data Transfer Risk Assessment </span>
+          </Link>
+          <Link
+            href="/dashboard/gap-analysis"
+            className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
+          >
+            <ChartLine />
+            <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Gap Analysis Tool </span>
           </Link>
           <Link
             href="/dashboard/generator"

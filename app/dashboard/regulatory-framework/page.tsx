@@ -4,7 +4,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <section className='relative overflow-auto'>
+    <section className='relative overflow-auto px-4'>
       <FrameworkComparisonTool />
       <RegulatoryFrameworks />
     </section>

@@ -10,12 +10,14 @@ export const POST = async (req: Request) => {
     const standard2 = formData.get("standard2") as string;
     const industry = formData.get("industry") as string;
 
-    formData.append('policy_pdf', file);
-    formData.append('framework1', standard1);
-    formData.append('framework2', standard2);
-    formData.append('framework3', industry);
+    const reqData = new FormData();
 
-    const { data } = await axios.post(process.env.GAP_ANALYSIS_API as string, formData, {
+    reqData.append('policy_pdf', file);
+    reqData.append('framework1', standard1 || "");
+    reqData.append('framework2', standard2 || "");
+    reqData.append('framework3', industry || "");
+
+    const { data } = await axios.post(process.env.GAP_ANALYSIS_API as string, reqData, {
       headers: {
         'Content-Type': 'multipart/form-data', // Important for file uploads
       },

@@ -25,6 +25,7 @@ const GapAnalysisTool = () => {
 
   // Predefined options for dropdowns
   const internationalStandards = [
+    { value: null, label: 'Select International Standard' },
     { value: 'iso-27001', label: 'ISO 27001:2022' },
     { value: 'iso-27701', label: 'ISO 27701' },
     { value: 'nist-csf', label: 'NIST Cybersecurity Framework' },
@@ -35,6 +36,7 @@ const GapAnalysisTool = () => {
   ];
 
   const gccRegionalFrameworks = [
+    { value: null, label: 'Select GCC Regional Framework' },
     { value: 'sama-csf', label: 'SAMA Cyber Security Framework' },
     { value: 'nca-ecc', label: 'NCA Essential Cybersecurity Controls' },
     { value: 'saudi-pdpl', label: 'Saudi Personal Data Protection Law' },
@@ -43,6 +45,7 @@ const GapAnalysisTool = () => {
   ];
 
   const industryStandards = [
+    { value: null, label: 'Select Industry Standard' },
     { value: 'hipaa', label: 'HIPAA' },
     { value: 'swift-csp', label: 'SWIFT CSP' },
     { value: 'csa-controls', label: 'Cloud Security Alliance Controls' },
@@ -57,8 +60,8 @@ const GapAnalysisTool = () => {
 
   // Gap analysis submission
   const submitGapAnalysis = async () => {
-    if (!selectedFile || !standard1 || !standard2 || !industry) {
-      setError("Please select a file and all dropdown options");
+    if (!selectedFile || (!standard1 && !standard2 && !industry)) {
+      setError("Please select a file and at least one of dropdown options");
       return;
     }
     
@@ -208,7 +211,7 @@ const GapAnalysisTool = () => {
                   </SelectTrigger>
                   <SelectContent>
                     {internationalStandards.map(option => (
-                      <SelectItem key={option.value} value={option.value}>
+                      <SelectItem key={option.value} value={option.value as string}>
                         {option.label}
                       </SelectItem>
                     ))}
@@ -224,7 +227,7 @@ const GapAnalysisTool = () => {
                   </SelectTrigger>
                   <SelectContent>
                     {gccRegionalFrameworks.map(option => (
-                      <SelectItem key={option.value} value={option.value}>
+                      <SelectItem key={option.value} value={option.value as string}>
                         {option.label}
                       </SelectItem>
                     ))}
@@ -240,7 +243,7 @@ const GapAnalysisTool = () => {
                   </SelectTrigger>
                   <SelectContent>
                     {industryStandards.map(option => (
-                      <SelectItem key={option.value} value={option.value}>
+                      <SelectItem key={option.value} value={option.value as string}>
                         {option.label}
                       </SelectItem>
                     ))}

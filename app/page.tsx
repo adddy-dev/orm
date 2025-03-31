@@ -3,7 +3,6 @@ import FeaturesSec from '@/sections/FeaturesSec';
 import About from '@/sections/About';
 import HeroSec from '@/sections/HeroSec';
 import React from 'react';
-import Services from '@/sections/Services';
 import Benefits from '@/sections/Benefits';
 import Pricing from '@/sections/Pricing';
 import Demo from '@/sections/Demo';
@@ -23,7 +22,6 @@ const LandingPage = () => {
         <About />
         <Demo />
         <FeaturesSec />
-        <Services />
         <Benefits />
         <Pricing />
         <FAQSection />

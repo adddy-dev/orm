@@ -30,22 +30,18 @@ const Navbar = () => {
       href: '#',
     },
     {
-      label: 'About',
-      href: '#about',
-    },
-    {
       label: 'Services',
       href: '#',
       heads: [
         {
           label: 'By Industry',
           options: [
-            { label: 'Financial Services', href: '/' },
-            { label: 'Healthcare', href: '/' },
-            { label: 'Non-profit Organizations', href: '/' },
-            { label: 'Food & Beverages', href: '/' },
-            { label: 'Energy & Utility', href: '/' },
-            { label: 'Manufacturing', href: '/' },
+            { label: 'Financial Services', href: '/dashboard/industry-frameworks/Financial Services' },
+            { label: 'Healthcare', href: '/dashboard/industry-frameworks/Healthcare' },
+            { label: 'Non-profit Organizations', href: '/dashboard/industry-frameworks/Non-profit Organizations' },
+            { label: 'Food & Beverages', href: '/dashboard/industry-frameworks/Food & Beverages' },
+            { label: 'Energy & Utility', href: '/dashboard/industry-frameworks/Energy & Utility' },
+            { label: 'Manufacturing', href: '/dashboard/industry-frameworks/Manufacturing' },
           ]
         },
         {

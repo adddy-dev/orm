@@ -24,7 +24,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-background text-primary pt-16 pb-8">
+    <footer className="bg-background text-primary pt-16 pb-8 max-w-7xl mx-auto">
 
         {/* Footer Links Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12 pt-20 border-t border-border">
@@ -100,13 +100,13 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-muted-foreground">
+        <div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
-              © 2024 AIPolicyPro. All rights reserved.
+            <p className="text-sm text-muted-foreground text-center w-full">
+              © 2025 AIPolicyPro. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">
+              {/* <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">
                 Privacy Policy
               </Link>
               <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">
@@ -117,7 +117,7 @@ const Footer = () => {
               </Link>
               <Link href="#about" className="text-sm text-muted-foreground hover:text-primary">
                 About Us
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

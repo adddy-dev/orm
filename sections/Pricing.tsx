@@ -6,7 +6,7 @@ const Pricing = () => {
   const pricingPlans = [
     {
       name: "Starter",
-      price: "$100",
+      price: "Free",
       features: [
         "Up to 5 policy templates",
         "Basic AI customization",
@@ -17,14 +17,14 @@ const Pricing = () => {
     },
     {
       name: "Professional",
-      price: "$250",
+      price: "$50",
       popular: true,
       features: [
         "Unlimited policy templates",
         "Advanced AI customization",
-        "Priority support 24/7",
+        "Data Transfer Risk Assesssment",,
         "Real-time updates",
-        "Custom branding"
+        "Gap Analysis",
       ],
       buttonText: "Get Started"
     },
@@ -69,7 +69,7 @@ const Pricing = () => {
               <CardTitle className="text-2xl font-semibold text-secondary">{plan.name}</CardTitle>
               <div className="text-3xl font-bold mt-4">
                 {plan.price}
-                {plan.price !== "Custom" && (
+                {(plan.price !== "Custom" && plan.price !== 'Free')  && (
                   <span className="text-lg text-muted-foreground">/month</span>
                 )}
               </div>

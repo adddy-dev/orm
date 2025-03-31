@@ -25,10 +25,7 @@ export const Header = ({ title }: { title?: string }) => {
             </Button>
           </SignOutButton>
         </nav>
-        : <div className="flex items-center justify-end w-full gap-2">
-            <Button variant="ghost" size="sm">
-              Help
-            </Button>
+        : <div className="flex items-center justify-end w-full gap-4">
             <Link href={'/'}>
               <Button variant="ghost" size="icon">
                 <Home className="h-5 w-5" />

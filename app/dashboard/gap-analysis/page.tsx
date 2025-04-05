@@ -32,7 +32,9 @@ const GapAnalysisTool = () => {
     { value: 'nist-800-53', label: 'NIST 800-53' },
     { value: 'cobit-2019', label: 'COBIT 2019' },
     { value: 'soc-2', label: 'SOC 2' },
-    { value: 'gdpr', label: 'GDPR' }
+    { value: 'gdpr', label: 'GDPR' },
+    { value: 'swift-csp', label: 'SWIFT CSP' },
+    { value: 'csa-controls', label: 'Cloud Security Alliance Controls' },
   ];
 
   const gccRegionalFrameworks = [
@@ -47,8 +49,6 @@ const GapAnalysisTool = () => {
   const industryStandards = [
     { value: null, label: 'Select Industry Standard' },
     { value: 'hipaa', label: 'HIPAA' },
-    { value: 'swift-csp', label: 'SWIFT CSP' },
-    { value: 'csa-controls', label: 'Cloud Security Alliance Controls' },
     { value: 'saudi-healthcare', label: 'Saudi NCA Healthcare Sector Controls' }
   ];
 
@@ -147,7 +147,7 @@ const GapAnalysisTool = () => {
                 Regional Framework: {gccRegionalFrameworks.find(s => s.value === standard2)?.label}
               </Text>
               <Text style={styles.text}>
-                Industry Standard: {industryStandards.find(s => s.value === industry)?.label}
+                Healthcare Standard: {industryStandards.find(s => s.value === industry)?.label}
               </Text>
             </View>
 

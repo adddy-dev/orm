@@ -35,7 +35,7 @@ const Contacts = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="!h-5 !w-5 text-tertiary" />
-                  <span>Dubai Internet City, UAE</span>
+                  <span> IFZA Headquarters, <br />Dubai Digital Park Buildings <br />DUBAI - UAE</span>
                 </div>
               </div>
             </CardContent>

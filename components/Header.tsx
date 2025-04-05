@@ -2,8 +2,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Home, RotateCw } from "lucide-react";
-import { SignOutButton, UserButton } from "@clerk/nextjs";
+import { Home, RotateCw, UserCircle } from "lucide-react";
 import Link from "next/link";
 
 export const Header = ({ title }: { title?: string }) => {
@@ -19,11 +18,11 @@ export const Header = ({ title }: { title?: string }) => {
             <Link href="/#faq">FAQ</Link>
             <Link href="/dashboard/generator">Support</Link>
           </div>
-          <SignOutButton>
+          {/* <SignOutButton> */}
             <Button variant="secondary" className="bg-primary text-accent-foreground hover:bg-primary-foreground">
               Log Out
             </Button>
-          </SignOutButton>
+          {/* </SignOutButton> */}
         </nav>
         : <div className="flex items-center justify-end w-full gap-4">
             <Link href={'/'}>
@@ -32,7 +31,8 @@ export const Header = ({ title }: { title?: string }) => {
               </Button>
             </Link>
             <Button variant="ghost" size="icon">
-              <UserButton />
+              {/* <UserButton /> */}
+              <UserCircle />
             </Button>
             <Button onClick={() => location.reload()} variant="ghost" size="icon">
               <RotateCw className="h-5 w-5" />

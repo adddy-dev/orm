@@ -59,7 +59,7 @@ const About = () => {
           {/* Left Column - Features */}
           <div>
             <h1 className="text-4xl font-extrabold mb-8">
-              Revolutionizing ISMS Policy Creation for Middle East SMEs
+              Revolutionizing ISMS Policy Creation for SMEs
             </h1>
 
             <div className="space-y-6">

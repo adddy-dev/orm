@@ -5,7 +5,8 @@ import {
   ShieldCheck, 
   RefreshCcw, 
   FileChartColumnIncreasing, 
-  Users 
+  Users, 
+  Check
 } from "lucide-react";
 import Image from 'next/image';
 
@@ -45,36 +46,51 @@ const FEATURES = [
 const About = () => {
 
   const features = [
-    "Get policies instantly",
-    "Tailored to your business",
-    "No Hassle, Just Results",
-    "Your data stays safe",
+    {
+      "head": "Instant AI-Generated Information Security Policies",
+      "content": "Customized to your business needs"
+    },
+    {
+      "head": "Policy Gap Analysis Tool",
+      "content": "Compare your existing policies against global and regional compliance requirements"
+    },
+    {
+      "head": "Risk Assessment for Data Transfers",
+      "content": "Ensure compliance when handling personal data across borders"
+    },
+    {
+      "head": "Third-Party Security Questionnaire",
+      "content": "Complete the Third-Party/Vendor Security Questionnaire fast and accurate"
+    },
+    {
+      "head": "Your Data Stays Secure",
+      "content": "Built with privacy and security at its core"
+    }
   ]
 
   return (
     <section className='bg-foreground' id='about'>
       <div className="w-full lg:pl-[4%] text-background flex flex-col md:flex-row items-center">
-        <div className='mx-auto px-6 py-12 md:py-20 lg:w-[55%]'>
-          <h2 className="text-[32px] md:text-4xl font-bold mb-8 md:mb-10 leading-[40px] md:leading-tight">
-            <span className="text-primary">Information and Cyber Security Docs</span><br />
-            with AI Support!
+        <div className='mx-auto px-6 py-12 md:py-16 lg:w-[55%]'>
+          <h2 className="text-[32px] md:text-4xl font-bold mb-8 md:mb-6 leading-[40px] md:leading-tight">
+            <span className="text-primary">Al-Powered ISMS Policies & Compliance Tools for the Region! </span>
           </h2>
 
-          <p className="md:text-lg max-w-base mb-8 md:mb-10 leading-tight text-primary font-medium">
-            Elevate your security documentation with the power of AI.
-            Our platform integrates intelligent AI support to create,
-            customize, and enhance your policies, saving you time and
-            ensuring precision.
+          <p className="md:text-lg max-w-base mb-8 md:mb-7 leading-tight font-medium">
+            Streamline your security documentation with Al-driven precision. AlPolicyPro provides fast, accurate, and fully compliant ISMS policies tailored to local regulations and international standards-ensuring your business stays secure and audit-ready. 
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 md:gap-y-6 max-w-xl">
-            {features.map((f, i) => (
-              <div className="flex items-center" key={i}>
-                <div className="border-[10px] md:border-[.7rem] border-y-6 md:border-y-8 border-transparent border-l-background"></div>
-                <span className='text-primary text-[18px] md:text-lg'>{f}</span>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 gap-2 md:gap-x-12 md:gap-y-3 max-w-xl">
+          {features.map((item, index) => (
+            <p key={index}>
+              <strong className='inline'><Check size={20} className='m-1 inline'/>{item.head}</strong> - 
+              <span>
+                {item.content}
+              </span>
+            </p>
+          ))}
           </div>
+          <p className='font-bold mt-8'>Get Started Today & Stay Ahead of Compliance!</p>
         </div>
         <div className="md:mb-0 mb-10 pl-16 md:pl-0 flex justify-end lg:w-[34%]">
           <Image

@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 import Logo from './Logo'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu'
-import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs'
 import { Button } from './ui/button'
 
 const Navbar = () => {
@@ -120,17 +119,19 @@ const Navbar = () => {
           )
         ))}
         <div className="flex items-center gap-5">
-          <SignedOut>
+          {/* <SignedOut>
             <SignInButton
               signUpForceRedirectUrl="/dashboard"
               forceRedirectUrl="/dashboard"
-            >
+            > */}
+            <Link href={'/signin'}>
               <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
                 Log in
               </Button>
-            </SignInButton>
+            </Link>
+            {/* </SignInButton>
           </SignedOut>
-          <SignedIn>
+          <SignedIn> */}
             <Link
               href="/dashboard"
             >
@@ -138,7 +139,7 @@ const Navbar = () => {
                 Dashboard
               </Button>
             </Link>
-          </SignedIn>
+          {/* </SignedIn> */}
         </div>
       </div>
 
@@ -206,17 +207,19 @@ const Navbar = () => {
             )
           ))}
           <div className="flex items-center gap-5">
-            <SignedOut>
+            {/* <SignedOut>
               <SignInButton
                 signUpForceRedirectUrl="/dashboard"
                 forceRedirectUrl="/dashboard"
-              >
+              > */}
+              <Link href={'/signin'}>
                 <Button className="text-base bg-foreground border-2 border-primary text-primary px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
                   Log in
                 </Button>
-              </SignInButton>
+              </Link>
+              {/* </SignInButton>
             </SignedOut>
-            <SignedIn>
+            <SignedIn> */}
               <Link
                 href="/dashboard"
               >
@@ -224,7 +227,7 @@ const Navbar = () => {
                   Dashboard
                 </Button>
               </Link>
-            </SignedIn>
+            {/* </SignedIn> */}
           </div>
         </div>
       )}

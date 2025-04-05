@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import Logo from '@/components/Logo';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SignedIn } from '@clerk/nextjs';
 import { Linkedin } from 'lucide-react';
 
 const Footer = () => {
@@ -59,14 +58,14 @@ const Footer = () => {
           <div className='flex flex-col items-center'>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <SignedIn>
+              {/* <SignedIn> */}
                 <li>
                   <Link href={'/dashboard'}
                     className="text-muted-foreground hover:text-primary transition-colors text-base">
                     Dashboard
                   </Link>
                 </li>
-              </SignedIn>
+              {/* </SignedIn> */}
               {quickLinks.map((link) => (
                 <li key={link.name} className='text-center'>
                   <Link

@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import PolicyGeneratorForm from '@/sections/PolicyGenerator';
 import Logo from '@/components/Logo';
-import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Home } from 'lucide-react';
@@ -19,17 +18,17 @@ export default function PolicyGenerator() {
             </Button>
           </Link>
           <div className="flex items-center gap-5">
-            <SignedOut>
+            {/* <SignedOut>
               <SignInButton
                 signUpForceRedirectUrl="/dashboard"
                 forceRedirectUrl="/dashboard"
-              >
+              > */}
                 <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
                   Log in
                 </Button>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
+              {/* </SignInButton> */}
+            {/* </SignedOut> */}
+            {/* <SignedIn> */}
               <Link
                 href="/dashboard"
               >
@@ -37,7 +36,7 @@ export default function PolicyGenerator() {
                   Dashboard
                 </Button>
               </Link>
-            </SignedIn>
+            {/* </SignedIn> */}
           </div>
         </div>
       </nav>

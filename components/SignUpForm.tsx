@@ -3,7 +3,6 @@
 import { Label } from '@radix-ui/react-label';
 import React, { useEffect, useState } from 'react'
 import { Input } from './ui/input';
-import Link from 'next/link';
 import { Button } from './ui/button';
 import { useRouter } from 'next/navigation';
 import { object, string, ZodError } from 'zod';
@@ -12,9 +11,9 @@ import { object, string, ZodError } from 'zod';
 const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 const signUpSchema = object({
-  username: string()
+  name: string()
         .nonempty('Username is required')
-        .min(3, 'Username must be at least 3 characters')
+        .min(1, 'Username must be at least 3 characters')
         .max(20, 'Username must be at most 20 characters'),
   email: string()
         .nonempty('Email is required')
@@ -32,7 +31,7 @@ const SignUpForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
   })
@@ -72,6 +71,7 @@ const SignUpForm = () => {
         throw new Error(resData.message);
       }
     } catch (error) {
+      console.log(error);
       setLoading(false);
       if(error instanceof ZodError) {
         setError(error.errors[0].message);
@@ -90,10 +90,10 @@ const SignUpForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className='mb-4'>
-        <Label htmlFor="username">Username</Label>
+        <Label htmlFor="fullname">Full Name</Label>
         <Input 
-          type="text" id="username" name='username' placeholder="johndoe" required
-          value={formData.username} onChange={handleChange}
+          type="text" id="fullname" name='name' placeholder="johndoe" required
+          value={formData.name} onChange={handleChange}
         />
       </div>
       <div className='mb-4'>
@@ -109,12 +109,12 @@ const SignUpForm = () => {
           type="password" id="password" name='password' placeholder="********" required
           value={formData.password} onChange={handleChange}
         />
-        <Link
+        {/* <Link
           href='/signin'
           className='block w-full text-sm text-blue-500 hover:underline text-right pt-1.5'
         >
           Forgot Password?
-        </Link>
+        </Link> */}
       </div>
       <Button type='submit' className='w-full' disabled={loading}>
         {loading ? "Signing Up..." : "Submit"}

@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react'
 import { Label } from './ui/label'
 import { Input } from './ui/input'
-import Link from 'next/link'
 import { Button } from './ui/button'
 import { signIn } from 'next-auth/react'
 import { object, string, ZodError } from 'zod'
@@ -84,12 +83,12 @@ const SignInForm:React.FC = () => {
           name='password' type="password" id="password" placeholder="********" required
           value={formData.password} onChange={handleChange}
         />
-        <Link
+        {/* <Link
           href='/signin'
           className='block w-full text-sm text-blue-500 hover:underline text-right pt-1.5'
         >
           Forgot Password?
-        </Link>
+        </Link> */}
       </div>
       <Button type='submit' className='w-full' disabled={loading}>
         {loading ? "Signing In..." : "Submit"}

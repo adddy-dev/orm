@@ -1,12 +1,11 @@
 import React from "react";
 
 import { IoShieldHalf } from "react-icons/io5";
-import { FaFileCode } from "react-icons/fa";
 import { MdOutlineMessage } from "react-icons/md";
 
 import Link from "next/link";
 import Logo from "./Logo";
-import { ChartCandlestick, ChartLine } from "lucide-react";
+import { ChartCandlestick, ChartLine, FileCode, FileQuestion } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 
 export default function Sidebar() {
@@ -54,8 +53,15 @@ export default function Sidebar() {
             href="/dashboard/generator"
             className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
           >
-            <FaFileCode />
+            <FileCode />
             <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Policy Generator </span>
+          </Link>
+          <Link
+            href="/dashboard/questionnaire"
+            className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
+          >
+            <FileQuestion />
+            <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Security Questionnaire Engine </span>
           </Link>
         </div>
       </div>

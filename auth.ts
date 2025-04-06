@@ -1,6 +1,5 @@
 import NextAuth, { CredentialsSignin } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
-import GitHub from "next-auth/providers/github"
 import Google from "next-auth/providers/google"
 import User from "./models/User"
 import bcrypt from "bcrypt"
@@ -47,18 +46,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const { password: _, ...user } = userExists.toObject();
 
         return user;
-      },
-    }),
-
-    GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
       },
     }),
 

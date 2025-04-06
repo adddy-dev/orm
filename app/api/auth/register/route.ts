@@ -5,13 +5,13 @@ import connectDB from "@/lib/db";
 
 export const POST = async (req: NextRequest) => {
   
-  const { username, email, password } = await req.json();
+  const { name, email, password } = await req.json();
   
   await connectDB();
   
   try {
     const alreadyExists = await User.findOne({
-      $or: [{ username }, { email }] 
+      $or: [{ email }] 
     });
     if(alreadyExists){
       if(alreadyExists.oauthProvider === 'credentials')
@@ -22,7 +22,7 @@ export const POST = async (req: NextRequest) => {
       
     const hashedPassword = await bcrypt.hash(password, 10);
     
-    const user = await User.create({ username, email, password: hashedPassword });
+    const user = await User.create({ name, email, password: hashedPassword });
 
     const userWithoutPassword = await User.findById(user._id).select('-password');
 

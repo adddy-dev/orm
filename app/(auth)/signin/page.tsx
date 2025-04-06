@@ -21,7 +21,7 @@ const SignIn:React.FC = () => {
       </CardHeader>
       <CardContent className='pb-0'>
         <SignInForm />
-        <div className="or-separator text-center">
+        <div className="or-separator text-center py-2">
           <span>OR</span>
         </div>
       </CardContent>
@@ -29,7 +29,7 @@ const SignIn:React.FC = () => {
       <CardFooter className='flex-col'>
         <SocialAuth />
         <div className='text-center text-sm pt-3 text-muted-foreground'>
-          Don't have an account?
+          Don&apos;t have an account?
           <Link href='/signup' className='text-blue-500 hover:underline pl-1'>
             Sign Up
           </Link>

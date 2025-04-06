@@ -5,8 +5,12 @@ import Logo from '@/components/Logo';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Home } from 'lucide-react';
+import { auth } from '@/auth';
 
-export default function PolicyGenerator() {
+export default async function PolicyGenerator() {
+
+  const session = await auth();
+
   return (
     <section className='min-h-screen bg-background'>
       <nav className="flex items-center justify-between px-4 md:px-8 h-16 bg-background sticky top-0 z-50">
@@ -18,17 +22,7 @@ export default function PolicyGenerator() {
             </Button>
           </Link>
           <div className="flex items-center gap-5">
-            {/* <SignedOut>
-              <SignInButton
-                signUpForceRedirectUrl="/dashboard"
-                forceRedirectUrl="/dashboard"
-              > */}
-                <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
-                  Log in
-                </Button>
-              {/* </SignInButton> */}
-            {/* </SignedOut> */}
-            {/* <SignedIn> */}
+            {session?.user ? (
               <Link
                 href="/dashboard"
               >
@@ -36,7 +30,12 @@ export default function PolicyGenerator() {
                   Dashboard
                 </Button>
               </Link>
-            {/* </SignedIn> */}
+            ) : 
+              <Link href={'/signin'}>
+                <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
+                  Log in
+                </Button>
+              </Link>}
           </div>
         </div>
       </nav>

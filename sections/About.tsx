@@ -71,7 +71,7 @@ const About = () => {
   return (
     <section className='bg-foreground' id='about'>
       <div className="w-full lg:pl-[4%] text-background flex flex-col md:flex-row items-center">
-        <div className='mx-auto px-6 py-12 md:py-16 lg:w-[55%]'>
+        <div className='mx-auto px-6 py-12 md:py-16 lg:w-[58%]'>
           <h2 className="text-[32px] md:text-4xl font-bold mb-8 md:mb-6 leading-[40px] md:leading-tight">
             <span className="text-primary">Al-Powered ISMS Policies & Compliance Tools for the Region! </span>
           </h2>
@@ -92,10 +92,10 @@ const About = () => {
           </div>
           <p className='font-bold mt-8'>Get Started Today & Stay Ahead of Compliance!</p>
         </div>
-        <div className="md:mb-0 mb-10 pl-16 md:pl-0 flex justify-end lg:w-[34%]">
+        <div className="md:mb-0 mb-10 pl-16 md:pl-0 flex justify-end lg:w-[40%]">
           <Image
-            width={300}
-            height={300}
+            width={400}
+            height={400}
             src="/featImage.png"
             alt="Hand"
             className='object-cover h-auto w-full' />

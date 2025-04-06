@@ -6,8 +6,12 @@ import Logo from './Logo'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu'
 import { Button } from './ui/button'
+import { useSession } from 'next-auth/react'
 
 const Navbar = () => {
+
+  const {data: session} = useSession();
+
   const [menuOpen, setMenuOpen] = useState(false)
   const navItems: Array<{
     label: string
@@ -119,19 +123,7 @@ const Navbar = () => {
           )
         ))}
         <div className="flex items-center gap-5">
-          {/* <SignedOut>
-            <SignInButton
-              signUpForceRedirectUrl="/dashboard"
-              forceRedirectUrl="/dashboard"
-            > */}
-            <Link href={'/signin'}>
-              <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
-                Log in
-              </Button>
-            </Link>
-            {/* </SignInButton>
-          </SignedOut>
-          <SignedIn> */}
+          {session?.user ? (
             <Link
               href="/dashboard"
             >
@@ -139,7 +131,12 @@ const Navbar = () => {
                 Dashboard
               </Button>
             </Link>
-          {/* </SignedIn> */}
+          ) : 
+            <Link href={'/signin'}>
+              <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
+                Log in
+              </Button>
+            </Link>}
         </div>
       </div>
 
@@ -207,19 +204,7 @@ const Navbar = () => {
             )
           ))}
           <div className="flex items-center gap-5">
-            {/* <SignedOut>
-              <SignInButton
-                signUpForceRedirectUrl="/dashboard"
-                forceRedirectUrl="/dashboard"
-              > */}
-              <Link href={'/signin'}>
-                <Button className="text-base bg-foreground border-2 border-primary text-primary px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
-                  Log in
-                </Button>
-              </Link>
-              {/* </SignInButton>
-            </SignedOut>
-            <SignedIn> */}
+            {session?.user ? (
               <Link
                 href="/dashboard"
               >
@@ -227,7 +212,12 @@ const Navbar = () => {
                   Dashboard
                 </Button>
               </Link>
-            {/* </SignedIn> */}
+            ) : 
+              <Link href={'/signin'}>
+                <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
+                  Log in
+                </Button>
+              </Link>}
           </div>
         </div>
       )}

@@ -21,7 +21,7 @@ const SignUp:React.FC = () => {
         </CardHeader>
         <CardContent className='pb-0'>
           <SignUpForm />
-          <div className="or-separator text-center">
+          <div className="or-separator text-center py-2">
             <span>OR</span>
           </div>
         </CardContent>

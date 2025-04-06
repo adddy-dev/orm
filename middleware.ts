@@ -4,7 +4,7 @@ import authConfig from "./auth.config";
 
 const { auth } = NextAuth(authConfig);
 
-const PUBLIC_ROUTES = ['/signin', '/signup'];
+const PUBLIC_ROUTES = ['/signin', '/signup', '/'];
 
 export const middleware = async (req: NextRequest) => {
    const { nextUrl } = req;

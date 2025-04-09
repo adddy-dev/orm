@@ -57,7 +57,7 @@ export default function Sidebar() {
             <span className="inline-block w-full text-ellipsis overflow-hidden whitespace-nowrap"> Policy Generator </span>
           </Link>
           <Link
-            href="/dashboard/questionnaire"
+            href="/dashboard/process-questionnaire"
             className="flex items-center gap-2 px-4 py-2 text-sm hover:text-zinc-700 hover:bg-foreground rounded-lg"
           >
             <FileQuestion />

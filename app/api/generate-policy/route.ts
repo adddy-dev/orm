@@ -18,7 +18,6 @@ export async function POST(req: Request) {
     
     // Make request to external API
     axios.defaults.baseURL = process.env.NEXT_POLICY_API;
-    console.log(process.env.NEXT_POLICY_API);
     const response = await axios.post('/generate_policy', {
       policy_name,
       company_name,

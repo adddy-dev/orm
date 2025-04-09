@@ -6,14 +6,14 @@ const Logo = () => {
   return (
     <Link href="/" className="flex items-center text-2xl font-bold text-primary">
       <Image
-        width={40}
-        height={40}
-        src="/logo.svg"
+        width={200}
+        height={20}
+        src="/logo.png"
         alt="AIPolicyPro Logo"
-        className='w-8 h-8 mr-2'
+        className='h-20 w-auto mr-2'
       />
-      <span className='font-medium'>|</span>
-      <h1 className='pl-2'>AIPolicyPro</h1>
+      {/* <span className='font-medium'>|</span>
+      <h1 className='pl-2'>AIPolicyPro</h1> */}
     </Link>
   )
 }

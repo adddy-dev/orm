@@ -9,13 +9,13 @@ const HeroSec = () => {
         '>
         {/* Left Column */}
         <div className="py-16 space-y-8 md:space-y-12 md:-mt-10 mx-8 md:mx-auto lg:w-[80%] text-center">
-          <h1 className="text-[40px] md:text-4xl font-semibold leading-tight">
-            Generate SAMA CSF, PDPL, NESA IAR and ISO 27001 COMPLIANT POLICY IN MINUTES
-            <span className="block text-primary">Powered by AI</span>
+          <h1 className="text-[40px] md:text-4xl font-semibold leading-normal">
+            Empower your compliance journey with AI-driven tools — from generating and enhancing ISMS policies to gap analysis, cross-border data risk assessments, and third-party security questionnaires
+            {/* <span className="block text-primary">Powered by AI</span> */}
           </h1>
 
           <p className="text-lg md:text-xl">
-            Transform your security documentation with intelligent AI support. Create, customize, and enhance ISMS policies effortlessly for your organization.
+            AI-powered compliance made simple — policies, risk assessments, and vendor security all in one place
           </p>
 
           <div className="flex flex-col gap-y-6 gap-x-12 md:flex-row md:justify-center px-4 py-8 md:p-0">

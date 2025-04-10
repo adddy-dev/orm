@@ -10,7 +10,7 @@ const Logo = () => {
         height={20}
         src="/logo.png"
         alt="AIPolicyPro Logo"
-        className='h-20 w-auto mr-2'
+        className='h-16 w-auto mr-2 object-cover'
       />
       {/* <span className='font-medium'>|</span>
       <h1 className='pl-2'>AIPolicyPro</h1> */}

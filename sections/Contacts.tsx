@@ -12,7 +12,7 @@ const Contacts = () => {
         <h2 className="text-4xl font-bold text-primary mb-4">
           Get in Touch
         </h2>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base text-muted-foreground px-2">
           Have questions about our AI-powered ISMS policy generator? We're here to help
         </p>
       </div>

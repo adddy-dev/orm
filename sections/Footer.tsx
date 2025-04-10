@@ -23,10 +23,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-background text-primary pt-16 pb-8 max-w-7xl mx-auto">
+    <footer className="bg-background text-primary md:pt-16 pt-5 pb-8 px-6 lg:px-0 max-w-7xl mx-auto">
 
         {/* Footer Links Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12 pt-20 border-t border-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12 sm:pt-20 pt-5 border-t border-border">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-primary">

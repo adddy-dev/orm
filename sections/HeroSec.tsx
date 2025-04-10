@@ -4,12 +4,12 @@ import Link from 'next/link'
 
 const HeroSec = () => {
   return (
-    <section className='bg-background relative overflow-hidden h-[calc(100vh-80px)]' id='hero'>
+    <section className='bg-background relative overflow-hidden min-h-[calc(100vh-80px)]' id='hero'>
       <div className='lg:max-w-[80%] xl:px-0 sm:px-8 md:py-24 flex items-center justify-center mx-auto relative z-10
         '>
         {/* Left Column */}
         <div className="py-16 space-y-8 md:space-y-12 md:-mt-10 mx-8 md:mx-auto lg:w-[80%] text-center">
-          <h1 className="text-[40px] md:text-4xl font-semibold leading-normal">
+          <h1 className="text-[25px] md:text-4xl font-semibold leading-normal">
             Empower your compliance journey with AI-driven tools — from generating and enhancing ISMS policies to gap analysis, cross-border data risk assessments, and third-party security questionnaires
             {/* <span className="block text-primary">Powered by AI</span> */}
           </h1>

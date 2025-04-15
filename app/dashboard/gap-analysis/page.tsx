@@ -147,7 +147,7 @@ const GapAnalysisTool = () => {
                 Regional Framework: {gccRegionalFrameworks.find(s => s.value === standard2)?.label}
               </Text>
               <Text style={styles.text}>
-                Healthcare Standard: {industryStandards.find(s => s.value === industry)?.label}
+                Healthcare Regulation: {industryStandards.find(s => s.value === industry)?.label}
               </Text>
             </View>
 
@@ -179,7 +179,7 @@ const GapAnalysisTool = () => {
     <section className="bg-background relative overflow-auto">
       <div className="w-full max-w-6xl mx-auto px-8">
         <h1 className="text-3xl text-primary font-bold text-center mb-2 mt-8">Gap Analysis Tool</h1>
-        <p className="text-muted-foreground text-center mb-12">Analyze and Compare Cybersecurity Frameworks</p>
+        <p className="text-muted-foreground text-center mb-12">Compare your existing Info Sec policies against Industry Standards</p>
         
         <div className="bg-card rounded-lg p-8 shadow-lg mt-12">
           <div className="grid md:grid-cols-2 gap-8">
@@ -236,7 +236,7 @@ const GapAnalysisTool = () => {
               </div>
               
               <div>
-                <h2 className="text-xl mb-4 font-semibold">Industry Standard</h2>
+                <h2 className="text-xl mb-4 font-semibold">Healthcare Regulation</h2>
                 <Select value={industry} onValueChange={setIndustry}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select Industry Standard" />

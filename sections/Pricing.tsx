@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 const Pricing = () => {
   const pricingPlans = [
@@ -83,9 +84,11 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-tertiary text-foreground hover:bg-tertiary-foreground">
-                {plan.buttonText}
-              </Button>
+              <Link href={'#contact'}>
+                <Button className="w-full bg-tertiary text-foreground hover:bg-tertiary-foreground">
+                  {plan.buttonText}
+                </Button> 
+              </Link>
             </CardContent>
           </Card>
         ))}

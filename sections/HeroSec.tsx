@@ -9,8 +9,8 @@ const HeroSec = () => {
         '>
         {/* Left Column */}
         <div className="py-16 space-y-8 md:space-y-12 md:-mt-10 mx-8 md:mx-auto lg:w-[80%] text-center">
-          <h1 className="text-[25px] md:text-4xl font-semibold leading-normal">
-            Empower your compliance journey with AI-driven tools — from generating and enhancing ISMS policies to gap analysis, cross-border data risk assessments, and third-party security questionnaires
+          <h1 className="text-[36px] md:text-6xl font-semibold leading-tight" style={{ lineHeight: '1.2' }}>
+            Empower your compliance journey with our AI-driven tools
             {/* <span className="block text-primary">Powered by AI</span> */}
           </h1>
 

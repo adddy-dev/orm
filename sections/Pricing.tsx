@@ -8,6 +8,7 @@ const Pricing = () => {
     {
       name: "Starter",
       price: "Free",
+      free: true,
       features: [
         "Up to 5 policy templates",
         "Basic AI customization",
@@ -84,7 +85,7 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
-              <Link href={'#contact'}>
+              <Link href={plan.free ? '/dashboard' : '#contact'}>
                 <Button className="w-full bg-tertiary text-foreground hover:bg-tertiary-foreground">
                   {plan.buttonText}
                 </Button> 

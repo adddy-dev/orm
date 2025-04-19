@@ -178,11 +178,11 @@ const DataTransferRiskAssessment = () => {
         {currentStep < 9 ? (
           <div className="mb-6">
             <div className="w-full bg-muted rounded-full h-2.5">
-              <div className="bg-tertiary h-2.5 rounded-full" style={{ width: `${(currentStep / 8) * 100}%` }}></div>
+              <div className="bg-tertiary h-2.5 rounded-full" style={{ width: `${((currentStep-1) / 8) * 100}%` }}></div>
             </div>
             <div className="flex justify-between mt-2">
               <span className="text-sm text-muted-foreground">Step {currentStep} of 8</span>
-              <span className="text-sm text-muted-foreground">{Math.round((currentStep / 8) * 100)}% Complete</span>
+              <span className="text-sm text-muted-foreground">{Math.round(((currentStep-1) / 8) * 100)}% Complete</span>
             </div>
           </div>
         ) : null}

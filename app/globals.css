@@ -91,6 +91,35 @@ html {
   
 }
 
+.moving-border:hover::before {
+  animation-play-state: running; 
+}
+.moving-border::before {
+  content: '';
+  animation: rotate 4s linear infinite;
+  animation-play-state: paused;
+  position: absolute;
+  z-index: 5;
+  top: -75%;
+  left: -75%;
+  width: 250%;
+  height: 250%;
+  background: conic-gradient(
+        #19a28d22 0deg 70deg,
+        var(--primary) 90deg 180deg,
+        #19a28d22 220deg 390deg
+      );
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

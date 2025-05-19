@@ -13,7 +13,7 @@ const Contacts = () => {
           Get in Touch
         </h2>
         <p className="text-base text-muted-foreground px-2">
-          Have questions about our AI-powered ISMS policy generator? We're here to help
+          Have questions about our ORM ? We're here to help
         </p>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,18 +25,18 @@ const Contacts = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Phone className="!h-5 !w-5 text-tertiary" />
-                  <span>+971 4 123 4567</span>
+                  <span>+91 89203 96371</span>
                 </div>
-                <div className="flex items-center gap-3">
+                {/* <div className="flex items-center gap-3">
                   <Mail className="!h-5 !w-5 text-tertiary" />
                   <Link href="mailto:contact@cyberpolicyal.com" className="hover:text-primary/80">
                     contact@aipolicypro.com
                   </Link>
-                </div>
-                <div className="flex items-center gap-3">
+                </div> */}
+                {/* <div className="flex items-center gap-3">
                   <MapPin className="!h-5 !w-5 text-tertiary" />
                   <span> IFZA Headquarters, <br />Dubai Digital Park Buildings <br />DUBAI - UAE</span>
-                </div>
+                </div> */}
               </div>
             </CardContent>
           </Card>

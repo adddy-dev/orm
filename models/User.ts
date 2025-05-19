@@ -1,4 +1,4 @@
-import {Schema, model, Document, models} from 'mongoose';
+import {Schema, model, Document, models, ObjectId} from 'mongoose';
 
 interface IUser extends Document {
   name?: string;
@@ -6,6 +6,8 @@ interface IUser extends Document {
   profileImg: string;
   password: string;
   oauthProvider: string;
+  role: string;
+  links: [ObjectId];
 }
 
 const userSchema:Schema<IUser> = new Schema({
@@ -27,6 +29,11 @@ const userSchema:Schema<IUser> = new Schema({
   oauthProvider: {
     type: String,
     default: 'credentials',
+  },
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user',
   },
 }, {timestamps: true});
 

@@ -6,6 +6,7 @@ import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { useRouter } from 'next/navigation';
 import { object, string, ZodError } from 'zod';
+import { toast } from '@/hooks/use-toast';
 
 
 const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -42,7 +43,7 @@ const SignUpForm = () => {
 
   useEffect(() => {
     if(error) {
-      handleErrorToast(error);
+      toast({ title: 'Sign Up Error', description: error, variant: 'destructive' });
       setError('');
     }
   }, [error])
@@ -63,15 +64,13 @@ const SignUpForm = () => {
       })
       const resData = await res.json();
       if(resData.success) {
-        // toast message toast(resData.message)
-        console.log('successfully signed up');
+        toast({ title: 'Success', description: 'Successfully signed up!' });
         setLoading(false);
         router.push('/signin');
       } else {  
         throw new Error(resData.message);
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
       if(error instanceof ZodError) {
         setError(error.errors[0].message);

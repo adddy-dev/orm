@@ -9,13 +9,13 @@ const HeroSec = () => {
         '>
         {/* Left Column */}
         <div className="py-16 space-y-8 md:space-y-12 md:-mt-10 mx-8 md:mx-auto lg:w-[80%] text-center">
-          <h1 className="text-[36px] md:text-6xl font-semibold leading-tight" style={{ lineHeight: '1.2' }}>
-            Empower your compliance journey with our AI-driven tools
+          <h1 className="text-[32px] md:text-5xl font-semibold leading-tight" style={{ lineHeight: '1.2' }}>
+            Spot and stop negative reviews instantly with our smart Online Review Management (ORM)
             {/* <span className="block text-primary">Powered by AI</span> */}
           </h1>
 
           <p className="text-lg md:text-xl">
-            AI-powered compliance made simple — policies, risk assessments, and vendor security all in one place
+            Automatically scan reviews, catch offensive language, and take control of your online presence—effortlessly.
           </p>
 
           <div className="flex flex-col gap-y-6 gap-x-12 md:flex-row md:justify-center px-4 py-8 md:p-0">

@@ -7,6 +7,8 @@ import { Button } from './ui/button'
 import { signIn } from 'next-auth/react'
 import { object, string, ZodError } from 'zod'
 import { useRouter } from 'next/navigation'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
+import { toast } from '@/hooks/use-toast'
 
 
 const signInSchema = object({
@@ -27,6 +29,7 @@ const SignInForm:React.FC = () => {
     email: '',
     password: '',
   });
+  const [role, setRole] = useState('user');
 
   const handleErrorToast = (message: string) => {
     console.log(message);
@@ -34,24 +37,21 @@ const SignInForm:React.FC = () => {
 
   useEffect(() => {
     if(error) {
-      handleErrorToast(error);
+      toast({ title: 'Sign In Error', description: error, variant: 'destructive' });
       setError('');
     }
   }, [error])
 
   const credentialSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
-
     e.preventDefault();
     setLoading(true);
-
     try {
       const validatedData = signInSchema.parse(formData);
-      const res = await signIn('credentials', {...validatedData, redirect: false});
+      const res = await signIn('credentials', { ...validatedData, role, redirect: false });
       if(res?.code) throw new Error(res.code);
-      console.log('Logged in successfully');
+      toast({ title: 'Success', description: 'Logged in successfully!' });
       setLoading(false);
       router.push('/');
-      
     } catch (error) {
       setLoading(false);
       if(error instanceof ZodError) {
@@ -83,12 +83,18 @@ const SignInForm:React.FC = () => {
           name='password' type="password" id="password" placeholder="********" required
           value={formData.password} onChange={handleChange}
         />
-        {/* <Link
-          href='/signin'
-          className='block w-full text-sm text-blue-500 hover:underline text-right pt-1.5'
-        >
-          Forgot Password?
-        </Link> */}
+      </div>
+      <div className='mb-4'>
+        <Label htmlFor="role">Role</Label>
+        <Select value={role} onValueChange={setRole}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select role" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="user">User</SelectItem>
+            <SelectItem value="admin">Admin</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       <Button type='submit' className='w-full' disabled={loading}>
         {loading ? "Signing In..." : "Submit"}

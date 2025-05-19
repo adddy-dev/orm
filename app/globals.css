@@ -56,15 +56,15 @@ html {
 
     --background: #22222b;
     --foreground: #fef5f4;
-    --tertiary: #5a39a2;
-    --tertiary-foreground: #8356e3;
+    --tertiary: #3d43c0;
+    --tertiary-foreground: #5666e3;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: #19a28d;
+    --primary: #0f7be7;
     --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: #ff492c;
+    --secondary: #44cfa1;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;

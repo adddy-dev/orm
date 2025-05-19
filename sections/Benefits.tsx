@@ -1,45 +1,45 @@
 import React from 'react';
 import { 
-  Clock, 
   ShieldCheck, 
-  Scale, 
-  ArrowUpRight, 
-  RotateCw, 
-  Layers 
+  TrendingUp,
+  Zap,
+  BarChart2,
+  AlertTriangle,
+  Search
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const ADVANTAGES = [
   {
-    icon: Clock,
-    title: "Time Efficiency",
-    description: "Reduce policy creation time by up to 90% with our AI-powered platform"
+    icon: Search,
+    title: "Automated Review Monitoring",
+    description: "Continuously track and analyze customer reviews across multiple platforms"
   },
   {
-    icon: Scale,
-    title: "Regional Expertise",
-    description: "Specialized knowledge of Middle Eastern compliance requirements"
+    icon: AlertTriangle,
+    title: "Negative Content Detection",
+    description: "Instantly identify and flag reviews containing harmful or inappropriate language"
+  },
+  {
+    icon: BarChart2,
+    title: "Sentiment Analysis",
+    description: "Gain insights into customer sentiment to shape brand perception"
   },
   {
     icon: ShieldCheck,
-    title: "Enhanced Compliance",
-    description: "Ensure 100% alignment with regional and international security standards"
+    title: "Brand Protection",
+    description: "Proactively manage your online reputation and mitigate potential PR risks"
   },
   {
-    icon: Layers,
-    title: "Seamless Integration",
-    description: "Easy integration with existing security frameworks and tools"
+    icon: Zap,
+    title: "Real-Time Alerts",
+    description: "Receive immediate notifications for new reviews or flagged content"
   },
   {
-    icon: ArrowUpRight,
-    title: "Cost Reduction",
-    description: "Save up to 70% on policy development and maintenance costs"
-  },
-  {
-    icon: RotateCw,
-    title: "Continuous Updates",
-    description: "Always stay current with automatic policy updates and improvements"
+    icon: TrendingUp,
+    title: "Improved Customer Trust",
+    description: "Boost credibility and trust through timely response and reputation insights"
   }
 ];
 

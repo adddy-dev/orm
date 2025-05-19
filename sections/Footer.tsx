@@ -8,9 +8,7 @@ import { Linkedin } from 'lucide-react';
 const Footer = () => {
   const quickLinks = [
     { name: 'Home', href: '#hero' },
-    { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
-    { name: 'Demo', href: '#demo' },
     { name: 'Pricing', href: '#pricing' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -36,21 +34,11 @@ const Footer = () => {
               Empowering Middle East SMEs with AI-driven ISMS policy generation and management solutions.
             </p>
             <div className="flex gap-4">
-              <Link href={'https://www.linkedin.com/company/106259682'}>
+              <Link href={'https://www.linkedin.com'}>
                 <Button variant="ghost" size="icon">
                   <Linkedin className="!h-5 !w-5" />
                 </Button>
               </Link>
-            </div>
-            <div className=' pt-18'>
-              Powered by
-              <Image 
-                src={'/ca_logo.svg'}
-                alt="CyberAssured Logo"
-                width={200}
-                height={100}
-                className="object-cover pt-2 block"
-              />
             </div>
           </div>
 

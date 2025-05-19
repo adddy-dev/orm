@@ -6,7 +6,7 @@ import Logo from './Logo'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu'
 import { Button } from './ui/button'
-import { useSession } from 'next-auth/react'
+import { useSession, signOut } from 'next-auth/react'
 
 const Navbar = () => {
 
@@ -30,89 +30,28 @@ const Navbar = () => {
   }> = [
     {
       label: 'Home',
-      href: '#',
+      href: '/#',
     },
     {
       label: 'Services',
-      href: '#',
-      heads: [
-        {
-          label: 'By Industry',
-          options: [
-            { label: 'Financial Services', href: '/dashboard/industry-frameworks/Financial Services' },
-            { label: 'Healthcare', href: '/dashboard/industry-frameworks/Healthcare' },
-            { label: 'Non-profit Organizations', href: '/dashboard/industry-frameworks/Non-profit Organizations' },
-            { label: 'Food & Beverages', href: '/dashboard/industry-frameworks/Food & Beverages' },
-            { label: 'Energy & Utility', href: '/dashboard/industry-frameworks/Energy & Utility' },
-            { label: 'Manufacturing', href: '/dashboard/industry-frameworks/Manufacturing' },
-          ]
-        },
-        {
-          label: 'By Framework',
-          options: [
-            { label: 'SOX', href: '/' },
-            { label: 'ISO 27001', href: '/' },
-            { label: 'NIST', href: '/' },
-            { label: 'PCI DSS', href: '/' },
-            { label: 'SAMA CSF', href: '/' },
-            { label: 'PDPL', href: '/' },
-          ]
-        }
-      ]
+      href: '/services/scrapper',
+    },
+    {
+      label: 'Profile',
+      href: '/services/profile',
     },
     {
       label: 'Contact',
-      href: '#contact'
+      href: '/#contact'
     }
   ]
 
   return (
     <nav className="flex items-center justify-between px-4 md:px-8 h-20 bg-background sticky top-0 z-50">
       <Logo />
-
       {/* Desktop and larger screens: Menu links */}
       <div className="hidden md:flex items-center w-full max-w-5xl gap-x-10 justify-end">
         {navItems.map((item, index) => (
-          (item.options || item.heads) ? (
-            <DropdownMenu key={index}>
-              <DropdownMenuTrigger className='outline-none'>
-                <Link
-                  href={item.href}
-                  className="hover:text-primary flex items-center gap-1 text-sm"
-                >
-                  {item.label}
-                  <ChevronDown size={16} />
-                </Link>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="center"
-                className='border border-muted-foreground bg-background'
-              >
-                {item.options && item.options.map((option, index) => (
-                  <DropdownMenuItem key={index}>
-                    <Link href={option.href} className='flex items-center gap-1'>
-                      <ChevronRight size={16} />
-                      {option.label}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-                <div className='flex flex-row gap-10 p-4'>
-                  {item.heads && item.heads.map((head, index) => (
-                    <div className='flex flex-col gap-2 items-start justify-start' key={index}>
-                      <h3 className='text-sm font-semibold mb-2'>{head.label}</h3>
-                      {head.options?.map((option, i) => (
-                        <DropdownMenuItem key={i}>
-                          <Link href={option.href} className='flex gap-1 items-center'>
-                            <ChevronRight size={16} />
-                            {option.label}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
             <Link
               key={index}
               href={item.href}
@@ -120,29 +59,35 @@ const Navbar = () => {
             >
               {item.label}
             </Link>
-          )
         ))}
         <div className="flex items-center gap-5">
-          {session?.user ? (
-            <Link
-              href="/dashboard"
-            >
-              <Button className="!py-1.5 px-4 text-sm">
-                Dashboard
+          {(session?.user) ? (
+            <>
+              {( session.user.role=='admin') && <Link href="/dashboard">
+                <Button className="!py-1.5 px-4 text-sm">
+                  Dashboard
+                </Button>
+              </Link>}
+              <Button
+                className="!py-1.5 px-4 text-sm bg-transparent text-destructive-foreground hover:text-primary ml-2"
+                onClick={() => signOut({ callbackUrl: '/signin' })}
+              >
+                Logout
               </Button>
-            </Link>
-          ) : 
+            </>
+          ) : (
             <Link href={'/signin'}>
               <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
                 Log in
               </Button>
-            </Link>}
+            </Link>
+          )}
         </div>
       </div>
 
       {/* Mobile menu toggle */}
       <button
-        className="lg:hidden flex-col flex items-center gap-1.5 justify-center cursor-pointer h-full"
+        className="md:hidden flex-col flex items-center gap-1.5 justify-center cursor-pointer h-full"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         <span className={`block w-8 h-1 bg-primary rounded-full transform transition duration-300 ${menuOpen ? 'rotate-45 translate-y-3' : ''}`}></span>
@@ -154,46 +99,6 @@ const Navbar = () => {
       {menuOpen && (
         <div className="md:hidden absolute top-20 left-0 right-0 bg-background p-6 z-50 text-center items-center flex flex-col gap-4">
           {navItems.map((item, index) => (
-            (item.options || item.heads) ? (
-              <DropdownMenu key={index}>
-                <DropdownMenuTrigger className='outline-none'>
-                  <Link
-                    href={item.href}
-                    className="hover:text-primary flex items-center gap-1 text-base"
-                  >
-                    {item.label}
-                    <ChevronDown size={16} />
-                  </Link>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="center"
-                  className='border border-muted-foreground bg-background'
-                >
-                  {item.options && item.options.map((option, index) => (
-                    <DropdownMenuItem key={index}>
-                      <Link href={option.href} className='flex items-center gap-1'>
-                        <ChevronRight size={16} />
-                        {option.label}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                  <div className='flex flex-row gap-10 p-4'>
-                    {item.heads && item.heads.map((head, index) => (
-                      <div className='flex flex-col gap-2 items-start justify-start' key={index}>
-                        <h3 className='text-sm font-semibold mb-2'>{head.label}</h3>
-                        {head.options?.map((option, i) => (
-                          <DropdownMenuItem key={i}>
-                            <Link href={option.href} className='flex gap-1 items-center'>
-                              <ChevronRight size={16} />
-                              {option.label}
-                            </Link>
-                          </DropdownMenuItem>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
               <Link
                 key={index}
                 href={item.href}
@@ -201,23 +106,29 @@ const Navbar = () => {
               >
                 {item.label}
               </Link>
-            )
           ))}
           <div className="flex items-center gap-5">
             {session?.user ? (
-              <Link
-                href="/dashboard"
-              >
-                <Button className="!py-1.5 px-4 text-sm">
-                  Dashboard
+              <>
+                <Link href="/dashboard">
+                  <Button className="!py-1.5 px-4 text-sm">
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button
+                  className="!py-1.5 px-4 text-sm bg-transparent text-destructive-foreground hover:text-primary ml-2"
+                  onClick={() => signOut({ callbackUrl: '/signin' })}
+                >
+                  Logout
                 </Button>
-              </Link>
-            ) : 
+              </>
+            ) : (
               <Link href={'/signin'}>
                 <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
                   Log in
                 </Button>
-              </Link>}
+              </Link>
+            )}
           </div>
         </div>
       )}

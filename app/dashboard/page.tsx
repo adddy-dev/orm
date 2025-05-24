@@ -40,7 +40,8 @@ const DashboardPage = () => {
             if (!data.users) throw new Error('Failed to fetch users data');
             setUsers(data.users);
          } catch (err) {
-            toast({ title: 'Error', description: 'Could not load users.' });
+            const errorMessage = err instanceof Error ? err.message : 'Could not load users.';
+            toast({ title: 'Error', description: errorMessage });
          } finally {
             setLoading(false);
          }

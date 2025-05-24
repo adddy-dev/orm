@@ -50,7 +50,7 @@ export const POST = async (req: NextRequest) => {
    }
 }
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
    try {
       const session = await auth();
       if (!session || !session.user?.id) {

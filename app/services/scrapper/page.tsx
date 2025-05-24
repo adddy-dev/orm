@@ -87,7 +87,8 @@ export default function ReputationForm() {
             toast({ title: "Error", description: data.message || "Failed to send data." })
          }
       } catch (error) {
-         toast({ title: "Error", description: "Something went wrong!" })
+         const errMsg = error instanceof Error ? error.message : 'An unexpected error occurred.'
+         toast({ title: "Error", description: errMsg })
       }
    }
 
@@ -95,7 +96,7 @@ export default function ReputationForm() {
       const state = { instagram, google, twitter }
       return (
          <div>
-            <Label className="text-tertiary-foreground">{label}</Label>
+            <Label className="text-secondary-foreground">{label}</Label>
             {state[platform].map((link, idx) => (
                <div key={idx} className="flex items-center gap-2 mt-1 mb-2">
                   <Input
@@ -156,7 +157,7 @@ export default function ReputationForm() {
             {renderLinkFields('twitter', 'Twitter/X Links', 'https://twitter.com/...')}
 
             <div className="pt-2 border-t border-border">
-               <Label className="text-tertiary-foreground">Reddit Keywords</Label>
+               <Label className="text-secondary-foreground">Reddit Keywords</Label>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                   <div>
                      <Label htmlFor="brand" className="text-sm">Brand Name</Label>

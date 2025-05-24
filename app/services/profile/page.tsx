@@ -7,9 +7,26 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from '@/hooks/use-toast';
 import axios from 'axios';
 
+type User = {
+   name: string;
+   email: string;
+   role: string;
+   // add other properties if needed
+};
+
+type ReputationLink = {
+   email: string;
+   brand?: string;
+   keywords?: string[];
+   instagram?: { url: string; keywords?: string[] }[];
+   google?: { url: string; keywords?: string[] }[];
+   twitter?: { url: string; keywords?: string[] }[];
+   // add other platforms if needed
+};
+
 export default function UserProfile() {
-   const [user, setUser] = useState<any>(null);
-   const [links, setLinks] = useState<any[]>([]);
+   const [user, setUser] = useState<User | null>(null);
+   const [links, setLinks] = useState<ReputationLink[]>([]);
    const [loading, setLoading] = useState(true);
 
    useEffect(() => {
@@ -19,7 +36,8 @@ export default function UserProfile() {
             if (!userData.user) throw new Error('Failed to fetch user data');
             setUser(userData.user);
          } catch (err) {
-            toast({ title: 'Error', description: 'Could not load data.' });
+            const errorMessage = err instanceof Error ? err.message : 'Could not load data.';
+            toast({ title: 'Error', description: errorMessage });
          } finally {
             setLoading(false);
          }
@@ -33,7 +51,8 @@ export default function UserProfile() {
             console.log('Fetched links:', data);
             setLinks(data.data);
          } catch (err) {
-            toast({ title: 'Error', description: 'Could not load links data.' });
+            const errorMessage = err instanceof Error ? err.message : 'Could not load links data.';
+            toast({ title: 'Error', description: errorMessage });
          } finally {
             setLoading(false);
          }
@@ -80,14 +99,14 @@ export default function UserProfile() {
                      <CardContent className="space-y-2 text-sm">
                         <div><strong>Email:</strong> {item.email}</div>
                         {item.brand && <div><strong>Brand:</strong> {item.brand}</div>}
-                        {item.keywords && <div><strong>Keywords:</strong> {item.keywords}</div>}
+                        {item.keywords && <div><strong>Keywords:</strong> {item.keywords.join(', ')}</div>}
 
-                        {['instagram', 'google', 'twitter'].map((platform) => (
-                           item[platform]?.length > 0 && (
+                        {(['instagram', 'google', 'twitter'] as const).map((platform) =>
+                           item[platform]?.length ? (
                               <div key={platform}>
                                  <strong className="capitalize">{platform} Links:</strong>
                                  <ul className="ml-4 list-disc">
-                                    {item[platform].map((link: any, idx: number) => (
+                                    {item[platform]?.map((link, idx) => (
                                        <li key={idx}>
                                           <a
                                              href={link.url}
@@ -97,17 +116,17 @@ export default function UserProfile() {
                                           >
                                              {link.url}
                                           </a>
-                                          {link.keywords?.length > 0 && (
+                                          {link.keywords?.length ? (
                                              <span className="ml-2 text-muted-foreground">
                                                 ({link.keywords.join(', ')})
                                              </span>
-                                          )}
+                                          ) : null}
                                        </li>
                                     ))}
                                  </ul>
                               </div>
-                           )
-                        ))}
+                           ) : null
+                        )}
                      </CardContent>
                   </Card>
                ))

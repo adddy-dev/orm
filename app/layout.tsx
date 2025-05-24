@@ -28,7 +28,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} dark`}
+        className={`${poppins.className}`}
       >
         <SessionProvider session={session}>
             <Navbar />

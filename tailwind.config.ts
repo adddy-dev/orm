@@ -19,23 +19,23 @@ export default {
   			},
   			secondary: {
   				DEFAULT: 'var(--secondary)',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				foreground: 'var(--secondary-foreground)'
   			},
   			tertiary: {
   				DEFAULT: 'var(--tertiary)',
   				foreground: 'var(--tertiary-foreground)'
   			},
   			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
+  				DEFAULT: 'var(--card)',
+  				foreground: 'var(--card-foreground)'
   			},
   			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
+  				DEFAULT: 'var(--popover)',
+  				foreground: 'var(--popover-foreground)'
   			},
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				DEFAULT: 'var(--muted)',
+  				foreground: 'var(--muted-foreground)'
   			},
   			accent: {
   				DEFAULT: 'hsl(var(--accent))',
@@ -45,9 +45,9 @@ export default {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
+  			border: 'var(--border)',
+  			input: 'var(--input)',
+  			ring: 'var(--ring)',
   			chart: {
   				'1': 'hsl(var(--chart-1))',
   				'2': 'hsl(var(--chart-2))',

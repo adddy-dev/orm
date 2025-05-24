@@ -1,20 +1,20 @@
-import { ButtonOne, ButtonTwo } from '@/components/Button'
+import { ButtonOne } from '@/components/Button'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const HeroSec = () => {
   return (
-    <section className='bg-background relative overflow-hidden min-h-[calc(100vh-80px)]' id='hero'>
+    <section className='bg-background relative overflow-hidden h-[calc(100vh-80px)] max-h-[600px]' id='hero'>
       <div className='lg:max-w-[80%] xl:px-0 sm:px-8 md:py-24 flex items-center justify-center mx-auto relative z-10
         '>
         {/* Left Column */}
         <div className="py-16 space-y-8 md:space-y-12 md:-mt-10 mx-8 md:mx-auto lg:w-[80%] text-center">
-          <h1 className="text-[32px] md:text-5xl font-semibold leading-tight" style={{ lineHeight: '1.2' }}>
+          <h1 className="text-[32px] md:text-6xl font-bold leading-tight" style={{ lineHeight: '1.2' }}>
             Spot and stop negative reviews instantly with our smart Online Review Management (ORM)
             {/* <span className="block text-primary">Powered by AI</span> */}
           </h1>
 
-          <p className="text-lg md:text-xl">
+          <p className="text-lg md:text-xl text-muted-foreground">
             Automatically scan reviews, catch offensive language, and take control of your online presence—effortlessly.
           </p>
 
@@ -25,18 +25,14 @@ const HeroSec = () => {
             <Link
               href='/generator'
             >
-              <ButtonTwo className='md:w-auto w-full'>
+              <ButtonOne className='md:w-auto w-full'>
                 Start for free
-              </ButtonTwo>
+              </ButtonOne>
             </Link>
           </div>
         </div>
 
       </div>
-      <video preload='auto' autoPlay loop muted className='md:w-full w-auto xl:h-auto h-full absolute top-0 left-0 object-cover z-1'>
-        <source src='/bgVid.mp4' type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
     </section>
   )
 }

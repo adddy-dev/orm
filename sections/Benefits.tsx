@@ -19,7 +19,7 @@ const ADVANTAGES = [
   {
     icon: AlertTriangle,
     title: "Negative Content Detection",
-    description: "Instantly identify and flag reviews containing harmful or inappropriate language"
+    description: "Instantly identify and flag reviews containing inappropriate language"
   },
   {
     icon: BarChart2,
@@ -45,12 +45,12 @@ const ADVANTAGES = [
 
 export default function Benefits() {
   return (
-    <div className="bg-background py-12 px-4 sm:px-6 lg:px-8" id='benefits'>
-      <div className="max-w-7xl mx-auto text-center mb-12">
-        <h2 className="text-4xl font-extrabold text-primary mb-4">
+    <div className="bg-background py-12 pb-20 px-4 sm:px-6 lg:px-8" id='benefits'>
+      <div className="max-w-screen-xl mx-auto text-center mb-12">
+        <h2 className="text-6xl font-extrabold text-primary mb-6">
           Why Choose Our Platform?
         </h2>
-        <p className="text-base text-muted-foreground">
+        <p className="text-lg md:text-xl text-muted-foreground">
           Transform your ISMS policy management with cutting-edge AI technology
         </p>
       </div>

@@ -37,10 +37,6 @@ const SignUpForm = () => {
     password: '',
   })
 
-  const handleErrorToast = (message: string) => {
-    console.log(message);
-  }
-
   useEffect(() => {
     if(error) {
       toast({ title: 'Sign Up Error', description: error, variant: 'destructive' });
@@ -115,7 +111,7 @@ const SignUpForm = () => {
           Forgot Password?
         </Link> */}
       </div>
-      <Button type='submit' className='w-full' disabled={loading}>
+      <Button type='submit' className='w-full  bg-foreground text-background hover:bg-transparent hover:text-foreground border-2' disabled={loading}>
         {loading ? "Signing Up..." : "Submit"}
       </Button>
     </form>

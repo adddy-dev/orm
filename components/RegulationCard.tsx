@@ -18,7 +18,7 @@ const RegulationCard = ({ regulation }: RegulationCardProps) => {
   return (
     <Card className="shadow-lg hover:scale-105 transition-transform">
       <CardHeader>
-        <h3 className="text-xl font-semibold text-tertiary">{regulation.framework}</h3>
+        <h3 className="text-xl font-semibold text-secondary">{regulation.framework}</h3>
       </CardHeader>
       <CardContent>
         <p className="font-medium text-primary">

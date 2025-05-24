@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Logo from '@/components/Logo';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Linkedin } from 'lucide-react';
+import { Linkedin, Github } from 'lucide-react';
 
 const Footer = () => {
   const quickLinks = [
@@ -21,93 +21,50 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-background text-primary md:pt-16 pt-5 pb-8 px-6 lg:px-0 max-w-7xl mx-auto">
-
-        {/* Footer Links Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12 sm:pt-20 pt-5 border-t border-border">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-primary">
-              <Logo />
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Empowering Middle East SMEs with AI-driven ISMS policy generation and management solutions.
-            </p>
-            <div className="flex gap-4">
-              <Link href={'https://www.linkedin.com'}>
-                <Button variant="ghost" size="icon">
-                  <Linkedin className="!h-5 !w-5" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className='flex flex-col items-center'>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {/* <SignedIn> */}
-                <li>
-                  <Link href={'/dashboard'}
-                    className="text-muted-foreground hover:text-primary transition-colors text-base">
-                    Dashboard
-                  </Link>
-                </li>
-              {/* </SignedIn> */}
-              {quickLinks.map((link) => (
-                <li key={link.name} className='text-center'>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-base"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          {/* <div>
-            <h3 className="font-semibold mb-4">Newsletter</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Stay updated with our latest features and releases.
-            </p>
-            <div className="space-y-2">
-              <Input
-                placeholder="Enter your email"
-                type="email"
-                className='bg-card'
-              />
-              <Button className="w-full">
-                Subscribe
-              </Button>
-            </div>
-          </div> */}
-        </div>
-
-        {/* Bottom Bar */}
-        <div>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground text-center w-full">
-              © 2025 AIPolicyPro. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              {/* <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">
-                Terms of Service
-              </Link>
-              <Link href="#/contact" className="text-sm text-muted-foreground hover:text-primary">
-                Contact
-              </Link>
-              <Link href="#about" className="text-sm text-muted-foreground hover:text-primary">
-                About Us
-              </Link> */}
-            </div>
+    <footer className="bg-card text-primary pt-12 pb-4 px-6 w-full border-t border-border px-4">
+      {/* Top Section */}
+      <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 pb-8">
+        {/* Logo and Company */}
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <Logo />
           </div>
         </div>
+        {/* Navigation */}
+        <div className="flex flex-col gap-2 md:col-span-1">
+          <ul className="space-y-2 mt-2">
+            <li><Link href="#" className="hover:underline">Home</Link></li>
+            <li><Link href="#" className="hover:underline">About</Link></li>
+            <li><Link href="#" className="hover:underline">Careers</Link></li>
+            <li><Link href="#" className="hover:underline">Blog</Link></li>
+          </ul>
+        </div>
+        {/* Legal */}
+        <div className="flex flex-col gap-2 md:col-span-1">
+          <h3 className="font-bold mb-2">LEGAL</h3>
+          <ul className="space-y-2">
+            <li><Link href="#" className="hover:underline">Privacy Policy</Link></li>
+            <li><Link href="#" className="hover:underline">Terms of Use</Link></li>
+          </ul>
+        </div>
+        {/* GitHub Icon */}
+        <div className="flex justify-end items-start md:col-span-1">
+          <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" size="icon">
+              <Github className="h-7 w-7" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+      {/* Divider */}
+      <hr className="border-border mb-4" />
+      {/* Bottom Bar */}
+      <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 pb-2">
+        <p className="text-sm text-muted-foreground">© 2025 ORM, Inc. All rights reserved.</p>
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-muted-foreground">Crafted by ORM Team</span>
+        </div>
+      </div>
     </footer>
   );
 };

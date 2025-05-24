@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import User from '@/models/User';
 import connectDB from '@/lib/db';
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
    try {
       // Get the current session
       const session = await auth();
@@ -20,6 +20,7 @@ export const GET = async (req: NextRequest) => {
       }
       return NextResponse.json({ user });
    } catch (error) {
+      console.error('User fetch error:', error);
       return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
    }
 };

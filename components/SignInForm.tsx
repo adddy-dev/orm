@@ -31,10 +31,6 @@ const SignInForm:React.FC = () => {
   });
   const [role, setRole] = useState('user');
 
-  const handleErrorToast = (message: string) => {
-    console.log(message);
-  }
-
   useEffect(() => {
     if(error) {
       toast({ title: 'Sign In Error', description: error, variant: 'destructive' });
@@ -96,7 +92,7 @@ const SignInForm:React.FC = () => {
           </SelectContent>
         </Select>
       </div>
-      <Button type='submit' className='w-full' disabled={loading}>
+      <Button type='submit' className='w-full bg-foreground text-background hover:bg-transparent hover:text-foreground border-2' disabled={loading}>
         {loading ? "Signing In..." : "Submit"}
       </Button>
     </form>

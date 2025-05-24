@@ -6,7 +6,8 @@ html {
   font-size: var(--size);
 }
 
-*, body {
+*,
+body {
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
   scrollbar-width: thin;
@@ -51,49 +52,48 @@ html {
 }
 
 @layer base {
-  :root{
-    --size: 16px;
 
-    --background: #22222b;
-    --foreground: #fef5f4;
-    --tertiary: #3d43c0;
-    --tertiary-foreground: #5666e3;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: #0f7be7;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: #44cfa1;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 28%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --radius: 0.5rem;
+  @layer base {
+    :root {
+      --background: #000000;
+      --foreground: #ffffff;
+      --card: #18181B;
+      --card-foreground: #dddddd;
+      --popover: #000000;
+      --popover-foreground: #ffffff;
+      --primary: #ffffff;
+      --primary-foreground: #000000;
+      --secondary: #a400a7;
+      --secondary-foreground: #ee32ff;
+      --muted: #999999;
+      --muted-foreground: #a1a1aa;
+      --accent: #999999;
+      --accent-foreground: #ffffff;
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: #ffffff;
+      --border: #999999;
+      --input: #999999;
+      --ring: 240 4.9% 83.9%;
+      --chart-1: 220 70% 50%;
+      --chart-2: 160 60% 45%;
+      --chart-3: 30 80% 55%;
+      --chart-4: 280 65% 60%;
+      --chart-5: 340 75% 55%;
+    }
   }
 }
 
 @media screen and (min-width: 1600px) {
-  :root{
+  /* :root {
     --size: 1vw;
-  }
-  
+  } */
+
 }
 
 .moving-border:hover::before {
-  animation-play-state: running; 
+  animation-play-state: running;
 }
+
 .moving-border::before {
   content: '';
   animation: rotate 4s linear infinite;
@@ -104,17 +104,16 @@ html {
   left: -75%;
   width: 250%;
   height: 250%;
-  background: conic-gradient(
-        #19a28d22 0deg 70deg,
-        var(--primary) 90deg 180deg,
-        #19a28d22 220deg 390deg
-      );
+  background: conic-gradient(#19a28d22 0deg 70deg,
+      var(--primary) 90deg 180deg,
+      #19a28d22 220deg 390deg);
 }
 
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -124,7 +123,8 @@ html {
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground max-w-screen-2xl mx-auto;
   }
 }

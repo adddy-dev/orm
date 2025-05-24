@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -13,7 +12,7 @@ const Logo = () => {
         className='h-16 w-auto mr-2 object-cover'
       /> */}
       {/* <span className='font-medium'>|</span> */}
-      <h1 className='pl-2'>ORM</h1>
+      <h1>ORM</h1>
     </Link>
   )
 }

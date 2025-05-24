@@ -34,12 +34,12 @@ const SERVICES = [
 
 function Services() {
   return (
-    <div className="bg-background py-16 px-4 sm:px-6 lg:px-8" id='services'>
-      <div className="max-w-7xl mx-auto text-center mb-12">
-        <h2 className="text-4xl font-extrabold text-primary mb-4">
+    <div className="bg-background py-20 px-4 sm:px-6 lg:px-8" id='services'>
+      <div className="max-w-screen-xl mx-auto text-center mb-12">
+        <h2 className="text-3xl md:text-6xl font-extrabold text-primary mb-6">
           Comprehensive ISMS Policy Services
         </h2>
-        <p className="text-base text-muted-foreground">
+        <p className="text-lg md:text-xl text-muted-foreground">
           End-to-end solutions for your information security management needs
         </p>
       </div>

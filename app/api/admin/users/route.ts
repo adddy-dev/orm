@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import connectDB from '@/lib/db';
 import User from '@/models/User';
 import Link from '@/models/Link';
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
    try {
       const session = await auth();
 

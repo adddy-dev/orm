@@ -3,10 +3,9 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import Logo from './Logo'
-import { ChevronDown, ChevronRight } from 'lucide-react'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu'
 import { Button } from './ui/button'
 import { useSession, signOut } from 'next-auth/react'
+import { ButtonOne } from './Button'
 
 const Navbar = () => {
 
@@ -43,61 +42,19 @@ const Navbar = () => {
     {
       label: 'Contact',
       href: '/#contact'
+    },
+    {
+      label: 'About Us',
+      href: '/#about'
     }
   ]
 
   return (
-    <nav className="flex items-center justify-between px-4 md:px-8 h-20 bg-background sticky top-0 z-50">
-      <Logo />
-      {/* Desktop and larger screens: Menu links */}
-      <div className="hidden md:flex items-center w-full max-w-5xl gap-x-10 justify-end">
-        {navItems.map((item, index) => (
-            <Link
-              key={index}
-              href={item.href}
-              className="hover:text-primary flex items-center gap-1 text-sm"
-            >
-              {item.label}
-            </Link>
-        ))}
-        <div className="flex items-center gap-5">
-          {(session?.user) ? (
-            <>
-              {( session.user.role=='admin') && <Link href="/dashboard">
-                <Button className="!py-1.5 px-4 text-sm">
-                  Dashboard
-                </Button>
-              </Link>}
-              <Button
-                className="!py-1.5 px-4 text-sm bg-transparent text-destructive-foreground hover:text-primary ml-2"
-                onClick={() => signOut({ callbackUrl: '/signin' })}
-              >
-                Logout
-              </Button>
-            </>
-          ) : (
-            <Link href={'/signin'}>
-              <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
-                Log in
-              </Button>
-            </Link>
-          )}
-        </div>
-      </div>
-
-      {/* Mobile menu toggle */}
-      <button
-        className="md:hidden flex-col flex items-center gap-1.5 justify-center cursor-pointer h-full"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        <span className={`block w-8 h-1 bg-primary rounded-full transform transition duration-300 ${menuOpen ? 'rotate-45 translate-y-3' : ''}`}></span>
-        <span className={`block w-8 h-1 bg-primary rounded-full transition duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
-        <span className={`block w-8 h-1 bg-primary rounded-full transition duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-      </button>
-
-      {/* Mobile menu items */}
-      {menuOpen && (
-        <div className="md:hidden absolute top-20 left-0 right-0 bg-background p-6 z-50 text-center items-center flex flex-col gap-4">
+    <div className='bg-background sticky top-0 z-50'>
+      <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-4 md:px-8 h-20">
+        <Logo />
+        {/* Desktop and larger screens: Menu links */}
+        <div className="hidden md:flex items-center w-full max-w-5xl gap-x-10 justify-end">
           {navItems.map((item, index) => (
               <Link
                 key={index}
@@ -108,15 +65,15 @@ const Navbar = () => {
               </Link>
           ))}
           <div className="flex items-center gap-5">
-            {session?.user ? (
+            {(session?.user) ? (
               <>
-                <Link href="/dashboard">
-                  <Button className="!py-1.5 px-4 text-sm">
+                {( session.user.role=='admin') && <Link href="/dashboard">
+                  <ButtonOne className="!py-1.5 px-4 text-base">
                     Dashboard
-                  </Button>
-                </Link>
+                  </ButtonOne>
+                </Link>}
                 <Button
-                  className="!py-1.5 px-4 text-sm bg-transparent text-destructive-foreground hover:text-primary ml-2"
+                  className="!py-1.5 px-4 text-base bg-transparent text-destructive-foreground hover:text-primary ml-2"
                   onClick={() => signOut({ callbackUrl: '/signin' })}
                 >
                   Logout
@@ -131,8 +88,56 @@ const Navbar = () => {
             )}
           </div>
         </div>
-      )}
-    </nav>
+
+        {/* Mobile menu toggle */}
+        <button
+          className="md:hidden flex-col flex items-center gap-1.5 justify-center cursor-pointer h-full"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span className={`block w-8 h-1 bg-primary rounded-full transform transition duration-300 ${menuOpen ? 'rotate-45 translate-y-3' : ''}`}></span>
+          <span className={`block w-8 h-1 bg-primary rounded-full transition duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`block w-8 h-1 bg-primary rounded-full transition duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        </button>
+
+        {/* Mobile menu items */}
+        {menuOpen && (
+          <div className="md:hidden absolute top-20 left-0 right-0 bg-background p-6 z-50 text-center items-center flex flex-col gap-4">
+            {navItems.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className="hover:text-primary flex items-center gap-1 text-base"
+                >
+                  {item.label}
+                </Link>
+            ))}
+            <div className="flex items-center gap-5">
+              {session?.user ? (
+                <>
+                  <Link href="/dashboard">
+                    <ButtonOne className="!py-1.5 px-4 text-base">
+                      Dashboard
+                    </ButtonOne>
+                  </Link>
+                  <Button
+                    className="!py-1.5 px-4 text-base bg-transparent text-destructive-foreground hover:text-primary ml-2"
+                    onClick={() => signOut({ callbackUrl: '/signin' })}
+                  >
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <Link href={'/signin'}>
+                  <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
+                    Log in
+                  </Button>
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
+      </nav>
+    </div>
   )
 }
 

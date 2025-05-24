@@ -1,23 +1,17 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import Logo from '@/components/Logo';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Github } from 'lucide-react';
 
 const Footer = () => {
+  // Updated quickLinks
   const quickLinks = [
     { name: 'Home', href: '#hero' },
-    { name: 'Services', href: '#services' },
+    { name: 'Services', href: '/services/scrapper' },
     { name: 'Pricing', href: '#pricing' },
     { name: 'Contact', href: '#contact' },
-  ];
-
-  const resources = [
-    { name: 'Documentation', href: '/docs' },
-    { name: 'Knowledge Base', href: '/knowledge' },
-    { name: 'API Reference', href: '/api' },
-    { name: 'Support Center', href: '/support' },
+    { name: 'About Us', href: '#about' },
   ];
 
   return (
@@ -33,10 +27,11 @@ const Footer = () => {
         {/* Navigation */}
         <div className="flex flex-col gap-2 md:col-span-1">
           <ul className="space-y-2 mt-2">
-            <li><Link href="#" className="hover:underline">Home</Link></li>
-            <li><Link href="#" className="hover:underline">About</Link></li>
-            <li><Link href="#" className="hover:underline">Careers</Link></li>
-            <li><Link href="#" className="hover:underline">Blog</Link></li>
+            {quickLinks.map(link => (
+              <li key={link.name}>
+                <Link href={link.href} className="hover:underline">{link.name}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         {/* Legal */}
@@ -49,9 +44,9 @@ const Footer = () => {
         </div>
         {/* GitHub Icon */}
         <div className="flex justify-end items-start md:col-span-1">
-          <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
             <Button variant="ghost" size="icon">
-              <Github className="h-7 w-7" />
+              <Linkedin className="h-8 w-8" />
             </Button>
           </Link>
         </div>

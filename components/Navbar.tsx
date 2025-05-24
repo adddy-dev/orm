@@ -59,7 +59,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 href={item.href}
-                className="hover:text-primary flex items-center gap-1 text-base"
+                className="hover:text-muted-foreground flex items-center gap-1 text-base"
               >
                 {item.label}
               </Link>
@@ -73,7 +73,7 @@ const Navbar = () => {
                   </ButtonOne>
                 </Link>}
                 <Button
-                  className="!py-1.5 px-4 text-base bg-transparent text-destructive-foreground hover:text-primary ml-2"
+                  className="!py-1.5 px-4 text-base bg-transparent text-destructive-foreground hover:text-muted-foreground ml-2"
                   onClick={() => signOut({ callbackUrl: '/signin' })}
                 >
                   Logout
@@ -81,7 +81,7 @@ const Navbar = () => {
               </>
             ) : (
               <Link href={'/signin'}>
-                <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-primary hover:text-foreground">
+                <Button className="text-base bg-transparent border-2 border-foreground text-foreground px-6 py-5 rounded-full font-bold hover:bg-foreground hover:text-background">
                   Log in
                 </Button>
               </Link>
@@ -106,7 +106,7 @@ const Navbar = () => {
                 <Link
                   key={index}
                   href={item.href}
-                  className="hover:text-primary flex items-center gap-1 text-base"
+                  className="hover:text-muted-foreground flex items-center gap-1 text-base"
                 >
                   {item.label}
                 </Link>
@@ -120,7 +120,7 @@ const Navbar = () => {
                     </ButtonOne>
                   </Link>
                   <Button
-                    className="!py-1.5 px-4 text-base bg-transparent text-destructive-foreground hover:text-primary ml-2"
+                    className="!py-1.5 px-4 text-base bg-transparent text-destructive-foreground hover:text-muted-foreground ml-2"
                     onClick={() => signOut({ callbackUrl: '/signin' })}
                   >
                     Logout

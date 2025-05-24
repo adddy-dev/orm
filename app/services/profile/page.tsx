@@ -11,7 +11,6 @@ type User = {
    name: string;
    email: string;
    role: string;
-   // add other properties if needed
 };
 
 type ReputationLink = {
@@ -21,12 +20,11 @@ type ReputationLink = {
    instagram?: { url: string; keywords?: string[] }[];
    google?: { url: string; keywords?: string[] }[];
    twitter?: { url: string; keywords?: string[] }[];
-   // add other platforms if needed
 };
 
 export default function UserProfile() {
    const [user, setUser] = useState<User | null>(null);
-   const [links, setLinks] = useState<ReputationLink[]>([]);
+   const [link, setLink] = useState<ReputationLink | null>(null);
    const [loading, setLoading] = useState(true);
 
    useEffect(() => {
@@ -44,20 +42,19 @@ export default function UserProfile() {
       };
       fetchData();
 
-      const fetchLinks = async () => {
+      const fetchLink = async () => {
          try {
             const { data } = await axios.get('/api/reputation');
             if (!data.data) throw new Error('Failed to fetch user data');
-            console.log('Fetched links:', data);
-            setLinks(data.data);
+            setLink(data.data);
          } catch (err) {
-            const errorMessage = err instanceof Error ? err.message : 'Could not load links data.';
+            const errorMessage = err instanceof Error ? err.message : 'Could not load link data.';
             toast({ title: 'Error', description: errorMessage });
          } finally {
             setLoading(false);
          }
       };
-      fetchLinks();
+      fetchLink();
    }, []);
 
    if (loading) return <div className="text-center mt-10">Loading...</div>;
@@ -65,10 +62,9 @@ export default function UserProfile() {
 
    return (
       <div className="max-w-3xl mx-auto mt-10 space-y-6">
-         {/* User Info Card */}
          <Card>
-            <CardHeader>
-               <CardTitle>User Profile</CardTitle>
+            <CardHeader className='pt-6 pb-4'>
+               <CardTitle className='text-xl'>User Profile</CardTitle>
             </CardHeader>
             <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
                <div>
@@ -88,48 +84,46 @@ export default function UserProfile() {
 
          {/* Reputation Data Cards */}
          <div className="space-y-4">
-            {links.length === 0 ? (
-               <p className="text-center text-muted-foreground">No reputation data found.</p>
-            ) : (
-               links.map((item, index) => (
-                  <Card key={index}>
-                     <CardHeader>
-                        <CardTitle>Submission #{index + 1}</CardTitle>
-                     </CardHeader>
-                     <CardContent className="space-y-2 text-sm">
-                        <div><strong>Email:</strong> {item.email}</div>
-                        {item.brand && <div><strong>Brand:</strong> {item.brand}</div>}
-                        {item.keywords && <div><strong>Keywords:</strong> {item.keywords.join(', ')}</div>}
+            {link ? (
+               <Card>
+                  <CardHeader className='pt-6 pb-4'>
+                     <CardTitle className='text-xl'>Links</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2 text-sm">
+                     <div><strong>Email:</strong> {link.email}</div>
+                     {link.brand && <div><strong>Brand:</strong> {link.brand}</div>}
+                     {link.keywords && <div><strong>Keywords:</strong> {link.keywords.join(', ')}</div>}
 
-                        {(['instagram', 'google', 'twitter'] as const).map((platform) =>
-                           item[platform]?.length ? (
-                              <div key={platform}>
-                                 <strong className="capitalize">{platform} Links:</strong>
-                                 <ul className="ml-4 list-disc">
-                                    {item[platform]?.map((link, idx) => (
-                                       <li key={idx}>
-                                          <a
-                                             href={link.url}
-                                             target="_blank"
-                                             rel="noopener noreferrer"
-                                             className="text-blue-600 underline"
-                                          >
-                                             {link.url}
-                                          </a>
-                                          {link.keywords?.length ? (
-                                             <span className="ml-2 text-muted-foreground">
-                                                ({link.keywords.join(', ')})
-                                             </span>
-                                          ) : null}
-                                       </li>
-                                    ))}
-                                 </ul>
-                              </div>
-                           ) : null
-                        )}
-                     </CardContent>
-                  </Card>
-               ))
+                     {(['instagram', 'google', 'twitter'] as const).map((platform) =>
+                        link[platform]?.length ? (
+                           <div key={platform}>
+                              <strong className="capitalize">{platform} Link:</strong>
+                              <ul className="ml-4 list-disc">
+                                 {link[platform]?.map((item, idx) => (
+                                    <li key={idx}>
+                                       <a
+                                          href={item.url}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="text-blue-600 underline"
+                                       >
+                                          {item.url}
+                                       </a>
+                                       {item.keywords?.length ? (
+                                          <span className="ml-2 text-muted-foreground">
+                                             ({item.keywords.join(', ')})
+                                          </span>
+                                       ) : null}
+                                    </li>
+                                 ))}
+                              </ul>
+                           </div>
+                        ) : null
+                     )}
+                  </CardContent>
+               </Card>
+            ) : (
+               <p className="text-center text-muted-foreground">No reputation data found.</p>
             )}
          </div>
       </div>

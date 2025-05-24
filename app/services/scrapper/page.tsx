@@ -1,15 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/hooks/use-toast"
 import axios from "axios"
+import { Trash2 } from 'lucide-react'
 
 type LinkWithKeywords = {
    url: string
-   keywords: string // comma-separated string, converted on submit
+   keywords: string // comma-separated
 }
 
 export default function ReputationForm() {
@@ -19,6 +20,41 @@ export default function ReputationForm() {
    const [twitter, setTwitter] = useState<LinkWithKeywords[]>([{ url: '', keywords: '' }])
    const [brand, setBrand] = useState('')
    const [keywords, setKeywords] = useState('')
+   const [loading, setLoading] = useState(true)
+
+   const fetchExistingData = async () => {
+      try {
+         const { data } = await axios.get('/api/reputation')
+         if (data?.data) {
+            const linkData = data.data
+
+            setEmail(linkData.email || '')
+            setInstagram(linkData.instagram?.length ? linkData.instagram.map((l: LinkWithKeywords & { keywords: string[] }) => ({
+               url: l.url || '',
+               keywords: (l.keywords || []).join(', ')
+            })) : [{ url: '', keywords: '' }])
+            setGoogle(linkData.google?.length ? linkData.google.map((l: LinkWithKeywords & { keywords: string[] }) => ({
+               url: l.url || '',
+               keywords: (l.keywords || []).join(', ')
+            })) : [{ url: '', keywords: '' }])
+            setTwitter(linkData.twitter?.length ? linkData.twitter.map((l: LinkWithKeywords & { keywords: string[] }) => ({
+               url: l.url || '',
+               keywords: (l.keywords || []).join(', ')
+            })) : [{ url: '', keywords: '' }])
+            setBrand(linkData.brand || '')
+            setKeywords(linkData.keywords || '')
+         }
+      } catch (error) {
+         console.error('Error fetching existing data:', error)
+         toast({ title: "Error", description: "Failed to load existing data." })
+      } finally {
+         setLoading(false)
+      }
+   }
+
+   useEffect(() => {
+      fetchExistingData()
+   }, [])
 
    const handleChange = (
       platform: 'instagram' | 'google' | 'twitter',
@@ -60,31 +96,22 @@ export default function ReputationForm() {
       e.preventDefault()
 
       const submissionData = {
+         email,
          instagram: formatLinksForSubmit(instagram),
          google: formatLinksForSubmit(google),
          twitter: formatLinksForSubmit(twitter),
          brand,
          keywords,
          reddit: `${brand}, ${keywords}`,
-         email,
       }
-
 
       try {
          const { data } = await axios.post('/api/reputation', submissionData)
 
-         if (data.data) {
-            toast({ title: "Success", description: "Data sent successfully!" })
-            console.log("Response data:", data);
-
-            setEmail('')
-            setInstagram([{ url: '', keywords: '' }])
-            setGoogle([{ url: '', keywords: '' }])
-            setTwitter([{ url: '', keywords: '' }])
-            setBrand('')
-            setKeywords('')
+         if (data?.data) {
+            toast({ title: "Success", description: "Data saved successfully!" })
          } else {
-            toast({ title: "Error", description: data.message || "Failed to send data." })
+            toast({ title: "Error", description: data.message || "Failed to save data." })
          }
       } catch (error) {
          const errMsg = error instanceof Error ? error.message : 'An unexpected error occurred.'
@@ -103,13 +130,13 @@ export default function ReputationForm() {
                      value={link.url}
                      onChange={(e) => handleChange(platform, idx, 'url', e.target.value)}
                      placeholder={urlPlaceholder}
-                     className="bg-input text-foreground border border-border"
+                     className="bg-transparent text-foreground border border-border"
                   />
                   <Input
                      value={link.keywords}
                      onChange={(e) => handleChange(platform, idx, 'keywords', e.target.value)}
                      placeholder="Keywords (comma separated)"
-                     className="bg-input text-foreground border border-border"
+                     className="bg-transparent text-foreground border border-border"
                   />
                   {state[platform].length > 1 && (
                      <Button
@@ -117,8 +144,9 @@ export default function ReputationForm() {
                         onClick={() => handleRemoveField(platform, idx)}
                         variant="destructive"
                         size="icon"
+                        className="bg-red-500 hover:bg-red-600 text-foreground p-2"
                      >
-                        🗑
+                        <Trash2 size={22} />
                      </Button>
                   )}
                </div>
@@ -126,8 +154,7 @@ export default function ReputationForm() {
             <Button
                type="button"
                onClick={() => handleAddField(platform)}
-               variant="secondary"
-               className="text-sm"
+               className="text-sm bg-foreground text-background hover:bg-transparent hover:text-foreground border-2"
             >
                + Add another
             </Button>
@@ -135,12 +162,16 @@ export default function ReputationForm() {
       )
    }
 
+   if (loading) {
+      return <p className="text-center mt-10">Loading...</p>
+   }
+
    return (
-      <div className="max-w-xl mx-auto mt-10 p-6 rounded-lg shadow-md bg-background text-foreground">
-         <h1 className="text-2xl font-bold mb-6 text-primary">Online Reputation Input</h1>
-         <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="max-w-screen-lg mx-auto mt-6 p-6 rounded-lg shadow-md bg-background text-foreground">
+         <h1 className="text-5xl text-center font-bold mb-6 text-primary">Online Reputation Form</h1>
+         <form onSubmit={handleSubmit} className="space-y-6 mb-10">
             <div>
-               <Label htmlFor="email" className="text-sm">Email Address<span className="text-red-500">*</span></Label>
+               <Label htmlFor="email" className="text-sm text-secondary-foreground">Email Address<span className="text-red-500">*</span></Label>
                <Input
                   name="email"
                   type="email"
@@ -148,7 +179,7 @@ export default function ReputationForm() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="mt-1 bg-input text-foreground border border-border"
+                  className="mt-1 bg-transparent text-foreground border border-border"
                />
             </div>
 
@@ -166,7 +197,7 @@ export default function ReputationForm() {
                         placeholder="e.g., Nike"
                         value={brand}
                         onChange={(e) => setBrand(e.target.value)}
-                        className="mt-1 bg-input text-foreground border border-border"
+                        className="mt-1 bg-transparent text-foreground border border-border"
                      />
                   </div>
                   <div>
@@ -176,7 +207,7 @@ export default function ReputationForm() {
                         placeholder="e.g., shoes, sportswear"
                         value={keywords}
                         onChange={(e) => setKeywords(e.target.value)}
-                        className="mt-1 bg-input text-foreground border border-border"
+                        className="mt-1 bg-transparent text-foreground border border-border"
                      />
                   </div>
                </div>
@@ -184,7 +215,7 @@ export default function ReputationForm() {
 
             <Button
                type="submit"
-               className="w-full bg-secondary text-secondary-foreground hover:brightness-110"
+               className="w-full bg-foreground text-background hover:bg-transparent hover:text-foreground border-2 mt-4"
             >
                Submit
             </Button>

@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from '@/hooks/use-toast';
 import axios from 'axios';
 import Loader from '@/components/Loader';
-import { FaInstagram, FaGoogle, FaTwitter } from 'react-icons/fa';
+import { FaInstagram, FaGoogle, FaTwitter, FaReddit } from 'react-icons/fa';
 
 type User = {
   name: string;
@@ -18,7 +18,7 @@ type User = {
 type ReputationLink = {
   email: string;
   brand?: string;
-  keywords?: string[];
+  keywords?: string;
   instagram?: { url: string; keywords?: string[] }[];
   google?: { url: string; keywords?: string[] }[];
   twitter?: { url: string; keywords?: string[] }[];
@@ -27,7 +27,8 @@ type ReputationLink = {
 const platformIcons: Record<string, React.ReactElement> = {
   instagram: <FaInstagram className="text-pink-500 text-xl inline-block mr-2" />,
   google: <FaGoogle className="text-yellow-500 text-xl inline-block mr-2" />,
-  twitter: <FaTwitter className="text-blue-400 text-xl inline-block mr-2" />
+  twitter: <FaTwitter className="text-blue-400 text-xl inline-block mr-2" />,
+  reddit: <FaReddit className="text-red-400 text-xl inline-block mr-2" />
 };
 
 export default function UserProfile() {
@@ -56,6 +57,7 @@ export default function UserProfile() {
         const { data } = await axios.get('/api/reputation');
         if (!data.data) throw new Error('Failed to fetch reputation data');
         setLink(data.data);
+        console.log(data.data);
       } catch (err) {
         toast({
           title: 'Error',
@@ -103,13 +105,20 @@ export default function UserProfile() {
           {link ? (
             <>
               <div><span className="font-medium text-foreground">Email:</span> {link.email}</div>
-              {link.brand && <div><span className="font-medium text-foreground">Brand:</span> {link.brand}</div>}
-              {link.keywords && link.keywords?.length && (
-                <div>
-                  <span className="font-medium text-foreground">Keywords:</span>{' '}
-                  <span className="italic">{link.keywords.join(', ')}</span>
-                </div>
-              )}
+              <div>
+                {link.brand && <>
+                  <h4 className="font-semibold mt-4 mb-1 text-foreground">
+                    {platformIcons['reddit']}Reddit
+                  </h4>
+                  <li><span className="font-medium text-foreground">Brand:</span> {link.brand}</li></>
+                }
+                {link.keywords && link.keywords?.length && (
+                  <li>
+                    <span className="font-medium text-foreground">Keywords:</span>{' '}
+                    <span className="italic">{link.keywords}</span>
+                  </li>
+                )}
+              </div>
 
               {/* Platform Links */}
               {(['instagram', 'google', 'twitter'] as const).map((platform) =>

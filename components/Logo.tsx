@@ -12,7 +12,7 @@ const Logo = () => {
         className='h-16 w-auto mr-2 object-cover'
       /> */}
       {/* <span className='font-medium'>|</span> */}
-      <h1>ORM</h1>
+      <h1 className='hover:text-secondary'>ORM</h1>
     </Link>
   )
 }

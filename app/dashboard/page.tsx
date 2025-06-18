@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from '@/hooks/use-toast';
 import axios from 'axios';
+import Loader from '@/components/Loader';
 
 interface LinkEntry {
    url: string;
@@ -49,7 +50,7 @@ const DashboardPage = () => {
       fetchUsers();
    }, []);
 
-   if (loading) return <div className="text-center mt-10">Loading...</div>;
+   if (loading) return <Loader />;
 
    return (
       <section className='min-h-screen bg-background text-foreground p-6'>

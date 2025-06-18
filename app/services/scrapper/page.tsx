@@ -7,6 +7,9 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/hooks/use-toast"
 import axios from "axios"
 import { Trash2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { motion, AnimatePresence } from 'framer-motion'
+import Loader from '@/components/Loader'
 
 type LinkWithKeywords = {
    url: string
@@ -14,6 +17,7 @@ type LinkWithKeywords = {
 }
 
 export default function ReputationForm() {
+   const router = useRouter()
    const [email, setEmail] = useState('')
    const [instagram, setInstagram] = useState<LinkWithKeywords[]>([{ url: '', keywords: '' }])
    const [google, setGoogle] = useState<LinkWithKeywords[]>([{ url: '', keywords: '' }])
@@ -109,7 +113,10 @@ export default function ReputationForm() {
          const { data } = await axios.post('/api/reputation', submissionData)
 
          if (data?.data) {
-            toast({ title: "Success", description: "Data saved successfully!" })
+            toast({ title: "Success", description: "Data saved successfully and will be sent to your email daily" })
+            setTimeout(() => {
+               router.push('/')
+            }, 100)
          } else {
             toast({ title: "Error", description: data.message || "Failed to save data." })
          }
@@ -122,52 +129,68 @@ export default function ReputationForm() {
    const renderLinkFields = (platform: 'instagram' | 'google' | 'twitter', label: string, urlPlaceholder: string) => {
       const state = { instagram, google, twitter }
       return (
-         <div>
-            <Label className="text-secondary-foreground">{label}</Label>
+        <div>
+          <Label className="text-secondary-foreground">{label}</Label>
+          <AnimatePresence initial={false}>
             {state[platform].map((link, idx) => (
-               <div key={idx} className="flex items-center gap-2 mt-1 mb-2">
-                  <Input
-                     value={link.url}
-                     onChange={(e) => handleChange(platform, idx, 'url', e.target.value)}
-                     placeholder={urlPlaceholder}
-                     className="bg-transparent text-foreground border border-border"
-                  />
-                  <Input
-                     value={link.keywords}
-                     onChange={(e) => handleChange(platform, idx, 'keywords', e.target.value)}
-                     placeholder="Keywords (comma separated)"
-                     className="bg-transparent text-foreground border border-border"
-                  />
-                  {state[platform].length > 1 && (
-                     <Button
-                        type="button"
-                        onClick={() => handleRemoveField(platform, idx)}
-                        variant="destructive"
-                        size="icon"
-                        className="bg-red-500 hover:bg-red-600 text-foreground p-2"
-                     >
-                        <Trash2 size={22} />
-                     </Button>
-                  )}
-               </div>
+              <motion.div
+                key={idx}
+                className="flex items-center gap-2 mt-1 mb-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Input
+                  value={link.url}
+                  onChange={(e) => handleChange(platform, idx, 'url', e.target.value)}
+                  placeholder={urlPlaceholder}
+                  className="bg-transparent text-foreground border border-border"
+                />
+                <Input
+                  value={link.keywords}
+                  onChange={(e) => handleChange(platform, idx, 'keywords', e.target.value)}
+                  placeholder="Keywords (comma separated)"
+                  className="bg-transparent text-foreground border border-border"
+                />
+                {state[platform].length > 1 && (
+                  <Button
+                    type="button"
+                    onClick={() => handleRemoveField(platform, idx)}
+                    variant="destructive"
+                    size="icon"
+                    className="bg-red-500 hover:bg-red-600 text-foreground p-2"
+                  >
+                    <Trash2 size={22} />
+                  </Button>
+                )}
+              </motion.div>
             ))}
-            <Button
-               type="button"
-               onClick={() => handleAddField(platform)}
-               className="text-sm bg-foreground text-background hover:bg-transparent hover:text-foreground border-2"
-            >
-               + Add another
-            </Button>
-         </div>
+          </AnimatePresence>
+          <Button
+            type="button"
+            onClick={() => handleAddField(platform)}
+            className="text-sm bg-foreground text-background hover:bg-transparent hover:text-foreground border-2"
+          >
+            + Add another
+          </Button>
+        </div>
       )
-   }
+    }
+    
 
    if (loading) {
-      return <p className="text-center mt-10">Loading...</p>
+      return <Loader />
    }
 
    return (
-      <div className="max-w-screen-lg mx-auto mt-6 p-6 rounded-lg shadow-md bg-background text-foreground">
+      <motion.div
+         initial={{ opacity: 0, y: 30 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+         className="max-w-screen-lg mx-auto mt-6 p-6 rounded-lg shadow-md bg-background text-foreground"
+      >
+       
          <h1 className="text-5xl text-center font-bold mb-6 text-primary">Online Reputation Form</h1>
          <form onSubmit={handleSubmit} className="space-y-6 mb-10">
             <div>
@@ -215,11 +238,11 @@ export default function ReputationForm() {
 
             <Button
                type="submit"
-               className="w-full bg-foreground text-background hover:bg-transparent hover:text-foreground border-2 mt-4"
+               className="w-full bg-foreground text-background hover:bg-transparent hover:text-foreground border-2 mt-5 hover:scale-105 transition-all"
             >
                Submit
             </Button>
          </form>
-      </div>
+      </motion.div>
    )
 }

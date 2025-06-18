@@ -26,9 +26,9 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${poppins.className}`}
+        className={`${poppins.className} antialiased`}
       >
         <SessionProvider session={session}>
             <Navbar />
